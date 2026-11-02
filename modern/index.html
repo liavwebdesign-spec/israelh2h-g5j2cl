@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>לב אל לב ישראל</title>
+<link rel="preload" as="font" href="../assets/fonts/GoogleSans-Bold.woff2" type="font/woff2" crossorigin>
+<link rel="icon" href="../assets/logo/logo.webp">
+<link rel="stylesheet" href="../assets/shared.css?v=202611021726">
+<style>
+/* סקיצה 2, מודרנית רגועה.
+   מהות: מקום שלא צריך להסביר בו הכול. נשימה, רכות, אנשים.
+   עור: Soft Modern (MV:s09), והרקע הוא מעבר הצבע מרקע הפורטרטים במצגת הצוות, #98adee אל #f3f1fe, שליאב אהב בפגישה.
+   הירו MV:h14; הדר MV:hd3. כחול המותג עובד, אדום רק לתרומה. */
+:root{--bg-top:#98ADEE;--bg-bottom:#F3F1FE;--surface-2:#E9EAF8;--fs-h1:clamp(38px, min(4.3vw, 8vh) + 0.5rem, 104px)}
+@media (max-width:480px){:root{--fs-h1:clamp(32px, 9.6vw, 38px)}}
+body{background:var(--bg-bottom)}
+
+/* הדר: גלולה לבנה צפה */
+.hd{padding:12px var(--gutter) 0}
+.hd-in{height:clamp(64px, 4.6vw, 80px);padding-inline:16px 12px;background:var(--white);border-radius:999px;box-shadow:0 2px 8px rgba(19,26,43,.04),0 12px 32px rgba(19,26,43,.08)}
+.hd-logo{height:clamp(52px, 3.8vw, 68px);padding-inline-start:8px}
+
+/* הירו */
+.hero{position:relative;display:grid;grid-template-columns:1.24fr .76fr;gap:var(--gap-m);min-height:100svh;padding-inline:var(--gutter);background:linear-gradient(180deg,var(--bg-top) 0%,#C6CFF4 52%,var(--bg-bottom) 100%);overflow:hidden}
+.txt{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:clamp(16px, 1.4vw, 32px);padding-block:calc(var(--header-h) + 40px) 48px}
+.line2{font-size:var(--fs-lead);line-height:1.4;font-weight:500;color:var(--blue-deep)}
+.lead{max-width:var(--measure)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.pill{display:inline-flex;align-items:center;gap:16px;min-height:60px;padding-block:8px;padding-inline:28px 8px;border-radius:999px;font-weight:500;text-decoration:none;white-space:nowrap;transition:box-shadow .3s var(--ease)}
+.pill i{display:grid;place-items:center;width:44px;height:44px;border-radius:999px;transition:transform .2s var(--ease)}
+.pill svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pill.solid{background:var(--blue);color:var(--white)}
+.pill.solid i{background:var(--white);color:var(--blue)}
+.pill.soft{background:var(--white);color:var(--ink);box-shadow:0 2px 8px rgba(19,26,43,.04),0 12px 32px rgba(19,26,43,.06)}
+.pill.soft i{background:var(--surface-2);color:var(--blue)}
+@media (hover:hover) and (pointer:fine){.pill:hover i{transform:translateX(-4px)}}
+
+.vis{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px;overflow:hidden;height:100svh;-webkit-mask-image:linear-gradient(to bottom,transparent 72px,#000 184px,#000 86%,transparent);mask-image:linear-gradient(to bottom,transparent 72px,#000 184px,#000 86%,transparent)}
+.col{display:flex;flex-direction:column;gap:16px;animation:up 70s linear infinite}
+.col.dn{animation-name:dn;animation-duration:84s}
+.col img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:28px}
+@keyframes up{to{transform:translateY(calc(-50% - 8px))}}
+@keyframes dn{from{transform:translateY(calc(-50% - 8px))}to{transform:none}}
+.hero.paused .col{animation-play-state:paused}
+@media (hover:hover) and (pointer:fine){.vis:hover .col{animation-play-state:paused}}
+.hero .hpp{position:absolute;inset-block-end:24px;inset-inline-end:calc(var(--gutter) + 16px);z-index:2}
+@media (prefers-reduced-motion:reduce){.col{animation:none}.hero .hpp{display:none}}
+
+/* הסקשן הכבד: שלושה עוגנים. התמונה נדבקת והכרטיס שבמרכז המסך נדלק */
+.anchors{padding:var(--sec-loose) var(--gutter)}
+.head{text-align:center;max-width:clamp(760px, 52vw, 1240px);margin-inline:auto;display:flex;flex-direction:column;align-items:center;gap:12px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-meta);font-weight:500;color:var(--blue-deep)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.head p:last-child{max-width:var(--measure);color:var(--muted)}
+.stage{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px, 4vw, 96px);margin-top:clamp(48px, 5vw, 112px);align-items:start}
+.photo{position:sticky;top:calc(var(--header-h) + 24px);height:calc(100svh - var(--header-h) - 64px);max-height:860px;border-radius:28px;overflow:hidden;background:var(--surface-2)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s var(--ease)}
+.photo img.on{opacity:1}
+.cards{display:flex;flex-direction:column;gap:clamp(24px, 22vh, 224px);padding-block:clamp(24px, 14vh, 160px)}
+.card{padding:clamp(28px, 3vw, 64px);border-radius:28px;background:var(--white);box-shadow:0 2px 8px rgba(19,26,43,.04),0 12px 32px rgba(19,26,43,.06);transition:background-color .5s var(--ease),color .5s var(--ease),box-shadow .5s var(--ease)}
+.card img{display:none}
+.card h3{font-size:clamp(24px, 2vw + 0.3rem, 52px);line-height:1.22;letter-spacing:-.01em}
+.card h3 span{display:block;font-size:var(--fs-lead);line-height:1.4;font-weight:500;letter-spacing:0;margin-top:4px}
+.card p{margin-top:16px;max-width:42ch;color:var(--muted);transition:color .5s var(--ease)}
+.card.on{background:linear-gradient(135deg,var(--blue-deep),var(--blue));color:var(--white);box-shadow:none}
+.card.on p{color:#DDE3F6}
+.more{display:flex;justify-content:center;margin-top:clamp(40px, 4vw, 96px);color:var(--blue)}
+
+/* הדרך: תמונה רחבה בפינות רכות, וכרטיס לבן שיושב עליה */
+.way{padding:var(--sec-loose) var(--gutter) 0}
+.frame{position:relative;margin-top:clamp(40px, 4vw, 96px);border-radius:40px;overflow:hidden}
+.frame>img{width:100%;aspect-ratio:2/1;object-fit:cover}
+.float{position:absolute;inset-block-end:16px;inset-inline-end:16px;width:min(46%, 760px);padding:var(--pad-card);display:grid;gap:12px;justify-items:start;background:var(--white);border-radius:24px}
+.float .big{font-size:var(--fs-lead);line-height:1.45}
+.float p:not(.big){color:var(--muted)}
+.float .textlink{color:var(--blue)}
+
+/* הייחודיות: קופסאות ברוחב לא שווה */
+.uniq{padding:var(--sec-loose) var(--gutter) 0}
+.bento{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;margin-top:clamp(40px, 4vw, 96px)}
+.b{padding:var(--pad-card);background:var(--white);border-radius:28px;box-shadow:0 2px 8px rgba(19,26,43,.04),0 12px 32px rgba(19,26,43,.06)}
+.b p{margin-top:8px;color:var(--muted);max-width:52ch}
+.b.big{grid-row:span 2;display:flex;flex-direction:column;padding:0;overflow:hidden}
+.b.big img{flex:1 1 320px;min-height:0;height:0;width:100%;object-fit:cover}
+.b.big .in{padding:var(--pad-card)}
+.av{width:clamp(88px, 7vw, 136px);height:clamp(88px, 7vw, 136px);border-radius:50%;object-fit:cover;margin-bottom:clamp(16px, 1.4vw, 28px)}
+
+/* ההשפעה: טבעות, הצורה העגולה ששמיל אהב. כל טבעת נמלאת פעם אחת כשהיא נכנסת למסך */
+.impact{padding:var(--sec-loose) var(--gutter) 0}
+.rings{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(40px, 4vw, 96px)}
+.r{padding:var(--pad-card);background:var(--white);border-radius:28px;text-align:center;box-shadow:0 2px 8px rgba(19,26,43,.04),0 12px 32px rgba(19,26,43,.06)}
+.ring{position:relative;width:clamp(168px, 15vw, 320px);margin-inline:auto}
+.ring svg{width:100%;height:auto;overflow:visible}
+.ring circle{fill:none;stroke-width:9}
+.ring .t{stroke:var(--surface-2)}
+.ring .v{stroke:url(#ringG);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:calc(100 - var(--v));transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1.6s var(--ease)}
+.anim .r:not(.in) .v{stroke-dashoffset:100}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;direction:ltr;font-size:clamp(44px, 3.6vw + 0.4rem, 92px);line-height:1;font-weight:700;letter-spacing:-.02em;color:var(--blue-deep)}
+.r h3{margin-top:clamp(16px, 1.6vw, 32px)}
+.r p{margin-top:8px;margin-inline:auto;max-width:34ch;color:var(--muted)}
+.src{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:clamp(32px, 3vw, 64px);text-align:center}
+.src small{font-size:var(--fs-meta);color:var(--muted);max-width:var(--measure)}
+.src .textlink{color:var(--blue)}
+
+/* סיפורים: מקום שמור, עד שיגיעו סיפורים ואישורי פרסום */
+.stories{padding:var(--sec) var(--gutter) 0}
+.ss{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(40px, 4vw, 96px)}
+.s{padding:12px 12px var(--pad-card);background:var(--white);border-radius:28px;box-shadow:0 2px 8px rgba(19,26,43,.04),0 12px 32px rgba(19,26,43,.06)}
+.s .ph-img{aspect-ratio:3/2;border-radius:16px}
+.s small,.s h3,.s p,.s .textlink{margin-inline:clamp(12px, 1vw, 24px)}
+.s small{display:block;margin-top:clamp(16px, 1.4vw, 28px);font-size:var(--fs-meta);font-weight:500;color:var(--blue)}
+.s p{margin-top:8px;color:var(--muted)}
+.s .textlink{margin-top:8px;color:var(--blue)}
+
+/* שותפים: גלולה לבנה אחת */
+.partners{padding:var(--sec) var(--gutter) 0;text-align:center}
+.partners .mq-row{margin-top:clamp(32px, 3vw, 64px);padding:clamp(16px, 1.4vw, 32px) clamp(24px, 2.4vw, 48px);background:var(--white);border-radius:999px;box-shadow:0 2px 8px rgba(19,26,43,.04),0 12px 32px rgba(19,26,43,.06)}
+
+/* קריאה לאימוץ */
+.adopt{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:var(--sec) var(--gutter);padding:16px;background:var(--white);border-radius:40px;box-shadow:0 2px 8px rgba(19,26,43,.04),0 12px 32px rgba(19,26,43,.08)}
+.adopt-txt{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:clamp(12px, 1.2vw, 24px);padding:clamp(24px, 4vw, 96px)}
+.adopt-txt>p:not(.eyebrow){color:var(--muted);max-width:44ch}
+.adopt img{width:100%;height:100%;min-height:clamp(280px, 30vw, 640px);object-fit:cover;border-radius:24px}
+.pill.red{background:var(--red);color:var(--white);margin-top:8px;transition:background-color .2s var(--ease)}
+.pill.red i{background:var(--white);color:var(--red)}
+@media (hover:hover) and (pointer:fine){.pill.red:hover{background:var(--red-hover)}}
+
+/* פוטר MV:ft1: סוגר גדול, על אותו מעבר צבע של הפתיחה, הפוך */
+.ft1{display:grid;gap:clamp(48px, 5vw, 112px);padding:var(--sec) var(--gutter) 32px;background:linear-gradient(0deg,var(--bg-top) 0%,#C6CFF4 52%,var(--bg-bottom) 100%);color:var(--ink)}
+.ft1 .ft-line{color:var(--blue-deep)}
+.ft1-cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap-m)}
+@media (hover:hover) and (pointer:fine){.ft1 a:hover{color:var(--blue)}}
+
+@media (max-width:860px){
+  .frame{border-radius:28px;overflow:visible}
+  .frame>img{aspect-ratio:3/2;border-radius:28px}
+  .float{position:relative;inset:auto;width:auto;margin:-32px 12px 0}
+  .bento,.rings,.ss{grid-template-columns:1fr}
+  .stories .head{text-align:start}
+  .stories .head p{margin-inline:0}
+  .b.big img{flex:none;height:auto;aspect-ratio:3/2}
+  .partners .mq-row{border-radius:28px;padding-inline:16px}
+  .adopt{grid-template-columns:1fr}
+  .adopt-txt{order:2;padding:16px 16px 24px}
+  .adopt img{aspect-ratio:3/2;height:auto;min-height:0}
+  .pill.red{align-self:stretch;justify-content:space-between}
+  .ft1-cols{grid-template-columns:1fr 1fr}
+  .hd{padding:8px 12px 0}
+  .hero{grid-template-columns:1fr;grid-template-rows:auto minmax(150px,1fr);gap:8px;padding-inline:24px;height:100svh;min-height:640px}
+  .txt{padding-block:calc(var(--header-h) + 24px) 0;gap:12px}
+  .cta{gap:8px;margin-top:4px}
+  .pill{min-height:52px;padding-inline:20px 6px;gap:8px;font-size:15px}
+  .pill i{width:40px;height:40px}
+  .vis{height:auto;min-height:0;margin-inline:-24px;padding-inline:12px;gap:10px;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 100%);mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 100%)}
+  .col{gap:10px}
+  .col img{border-radius:20px}
+  .hero .hpp{inset-inline-end:16px;inset-block-end:16px}
+  .stage{grid-template-columns:1fr}
+  .photo{display:none}
+  .cards{gap:16px;padding-block:0}
+  .card{padding:0 0 28px;overflow:hidden}
+  .card img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:24px}
+  .card h3,.card p{margin-inline:24px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">דלג לתוכן</a>
+
+<header class="hd">
+  <div class="hd-in">
+    <a class="hd-logo" href="./" aria-label="לב אל לב ישראל, לדף הבית"><img src="../assets/logo/logo.webp" alt="Israel Heart2Heart" width="620" height="640"></a>
+    <button aria-controls="hdNav" class="hd-burger" type="button" aria-expanded="false" aria-label="פתיחת התפריט"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav id="hdNav" class="hd-nav" aria-label="ראשי">
+      <div class="hd-item"><a class="hd-link" href="./" aria-current="page">דף הבית</a></div>
+      <div class="hd-item"><a class="hd-link" href="#">מסע השיקום וההעצמה <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5"/></svg></a>
+        <div class="hd-sub"><a href="#">התוכנית האזורית</a><a href="#"><span>הדסה</span> <small>במעגל החיים</small></a><a href="#">התוכנית הכללית</a><a href="#">אחיות שבלב</a><a href="#">קהילת הבוגרים</a></div></div>
+      <div class="hd-item"><a class="hd-link" href="#">מי אנחנו <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5"/></svg></a>
+        <div class="hd-sub"><a href="#">האנשים שמאחורי לב אל לב</a><a href="#">השגרירים שלנו</a><a href="#">שקיפות ודוחות</a></div></div>
+      <div class="hd-item"><a class="hd-link" href="#">ההשפעה שלנו</a></div>
+      <div class="hd-item"><a class="hd-link" href="#">יצירת קשר</a></div>
+      <a class="btn-donate" href="#" data-missing="חסר מהעמותה: קישור למערכת התרומות">לתרומה</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="hero" id="hero">
+    <div class="txt">
+      <h1 class="rv"><span class="ln">המלחמה נגמרת בשטח.</span> <span class="ln">בבית היא ממשיכה.</span></h1>
+      <p class="line2 rv">יש עוד דרך קדימה. הולכים בה יחד.</p>
+      <p class="lead rv">לב אל לב ישראל מלווה לוחמים ולוחמות המתמודדים עם פוסט טראומה בעקבות שירותם הצבאי, במסע של שיקום והעצמה. דרך קהילה, גוף ונפש ומנטורים, אנחנו בונים יחד כלים להתמודדות, קשרים מתמשכים והזדמנויות לחיים של שייכות ומשמעות.</p>
+      <div class="cta rv">
+        <a class="pill solid" href="#">להכיר את המסע <i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></i></a>
+        <a class="pill soft" href="#" data-missing="חסר מהעמותה: קישור לטופס במאנדיי">הרשם לתוכנית האזורית <i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></i></a>
+      </div>
+    </div>
+    <div class="vis rv" role="img" aria-label="צילומים ממפגשי לב אל לב: קבוצות, יוגה מול הים, חיבוקים ושקיעה">
+      <div class="col" aria-hidden="true">
+        <img src="../assets/img/sea-dog.webp" alt="" fetchpriority="high"><img src="../assets/img/sisters.webp" alt=""><img src="../assets/img/yoga-sea.webp" alt=""><img src="../assets/img/guitars.webp" alt="">
+        <img src="../assets/img/sea-dog.webp" alt=""><img src="../assets/img/sisters.webp" alt=""><img src="../assets/img/yoga-sea.webp" alt=""><img src="../assets/img/guitars.webp" alt="">
+      </div>
+      <div class="col dn" aria-hidden="true">
+        <img src="../assets/img/hug.webp" alt=""><img src="../assets/img/circle.webp" alt=""><img src="../assets/img/desert.webp" alt=""><img src="../assets/img/hug-mat.webp" alt="">
+        <img src="../assets/img/hug.webp" alt=""><img src="../assets/img/circle.webp" alt=""><img src="../assets/img/desert.webp" alt=""><img src="../assets/img/hug-mat.webp" alt="">
+      </div>
+    </div>
+    <button class="hpp" type="button" aria-pressed="false" aria-label="עצירת התמונות הזזות"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
+  </section>
+
+  <section class="way" id="way">
+    <div class="head" data-sr>
+      <p class="eyebrow">הדרך של לב אל לב</p>
+      <h2>מסע של שיקום והעצמה</h2>
+    </div>
+    <div class="frame" data-sr>
+      <img src="../assets/img/group-sunset.webp" alt="קבוצה גדולה של משתתפי לב אל לב על משטח עץ בשקיעה" width="2000" height="1080" loading="lazy">
+      <div class="float">
+        <p class="big">החזרה הביתה היא תחילתה של דרך שלעיתים נמשכת שנים. ההתמודדות נוכחת בשינה, במערכות היחסים, בעבודה ובשגרה היומיומית.</p>
+        <p>המסע בלב אל לב מעניק מסגרת מתמשכת שבה אפשר לבנות אמון, למצוא אנשים שמבינים, לפתח כלים ולהתקדם בקצב אישי.</p>
+        <a class="textlink" href="#">להכיר את מסע השיקום וההעצמה <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="uniq" id="uniq">
+    <div class="head" data-sr>
+      <p class="eyebrow">מה הייחודיות שלנו?</p>
+      <h2>קשר אישי. קרוב לבית. לאורך זמן.</h2>
+    </div>
+    <div class="bento">
+      <article class="b big" data-sr><img src="../assets/img/circle.webp" alt="קבוצה קטנה יושבת במעגל על הדשא" width="1200" height="1600" loading="lazy"><div class="in"><h3>קבוצות קטנות והיכרות אישית</h3><p>אנחנו מכירים את האנשים שבקבוצה ובונים קשר שמאפשר לכל משתתף ומשתתפת להרגיש שרואים אותם. יש מי שמקשיב, מבחין כשלא הגעת ומלווה גם כשקשה.</p></div></article>
+      <article class="b" data-sr><img class="av" src="../assets/img/yoga-hall.webp" alt="שיעור יוגה באולם" width="1600" height="900" loading="lazy"><h3>אנחנו מגיעים אליך</h3><p>27 מורים ומורות בפריסה ארצית, לצד פעילויות קבוצתיות בשישה מרחבים ברחבי הארץ, מביאים את העשייה קרוב לבית. התוכנית האזורית פועלת ב־12 מוקדים.</p></article>
+      <article class="b" data-sr><img class="av" src="../assets/img/guitars.webp" alt="משתתפים מנגנים יחד בגיטרות על הדשא" width="800" height="600" loading="lazy"><h3>זמן לבנות אמון ולהתקדם</h3><p>הדרך יכולה להתחיל בתוכנית האזורית או בתוכנית ״במעגל החיים״ ולהמשיך, לאחר בדיקת התאמה, למסע העצמה בן 18 חודשים. הקהילה והקשר ממשיכים גם בהמשך הדרך.</p></article>
+    </div>
+  </section>
+
+  <section class="impact" id="impact">
+    <div class="head" data-sr>
+      <p class="eyebrow">ההשפעה שלנו</p>
+      <h2>השינוי שעליו מדווחים הבוגרים.</h2>
+    </div>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="ringG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2C479E"/><stop offset="1" stop-color="#98ADEE"/></linearGradient></defs></svg>
+    <div class="rings" id="rings">
+      <article class="r"><div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="t" cx="60" cy="60" r="54"/><circle class="v" cx="60" cy="60" r="54" pathLength="100" style="--v:70"/></svg><b>70%</b></div><h3>התקדמות בשיקום</h3><p>דיווחו שהתוכנית סייעה להם להתקדם בתהליך השיקום האישי.</p></article>
+      <article class="r"><div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="t" cx="60" cy="60" r="54"/><circle class="v" cx="60" cy="60" r="54" pathLength="100" style="--v:73"/></svg><b>73%</b></div><h3>שייכות ומשמעות</h3><p>דיווחו שפעילות הקהילה חיזקה את תחושת השייכות והמשמעות.</p></article>
+      <article class="r"><div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="t" cx="60" cy="60" r="54"/><circle class="v" cx="60" cy="60" r="54" pathLength="100" style="--v:77"/></svg><b>77%</b></div><h3>פחות מתח ולחץ</h3><p>דיווחו שהיוגה תרמה להפחתת מתח ולחץ.</p></article>
+    </div>
+    <div class="src">
+      <small>סקר בוגרי לב אל לב, יוני־יולי 2025. 95 משיבים מתוך 110 בוגרים. דיווח עצמי של המשיבים.</small>
+      <a class="textlink" href="#">לממצאי המחקר ולסיפורים האישיים <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+    </div>
+  </section>
+
+  <section class="anchors" id="anchors">
+    <div class="head">
+      <p class="eyebrow">שיטת השיקום וההעצמה שלנו</p>
+      <h2>שלושה עוגנים משלימים</h2>
+      <p>המסע מחבר בין שלושה עוגנים שתומכים זה בזה ובחיים שמחוץ למפגשים.</p>
+    </div>
+    <div class="stage">
+      <div class="photo" aria-hidden="true">
+        <img class="on" src="../assets/img/group-sofas.webp" alt="" loading="lazy">
+        <img src="../assets/img/yoga-sea.webp" alt="" loading="lazy">
+        <img src="../assets/img/hug.webp" alt="" loading="lazy">
+      </div>
+      <div class="cards">
+        <article class="card on"><img src="../assets/img/group-sofas.webp" alt="" loading="lazy"><h3>קהילה <span>אני שייך</span></h3><p>קבוצה שמכירה אותך, מפגשים קבועים וקשרים שמאפשרים להרגיש חלק ממשהו ולהישען על אחרים.</p></article>
+        <article class="card"><img src="../assets/img/yoga-sea.webp" alt="" loading="lazy"><h3>גוף ונפש <span>יש לי כלים</span></h3><p>יוגה תרפיה מותאמת טראומה, נשימה ותנועה, עם כלים שאפשר לקחת אל חיי היום־יום.</p></article>
+        <article class="card"><img src="../assets/img/hug.webp" alt="" loading="lazy"><h3>מנטורים <span>יש מי שמלווה אותי</span></h3><p>קשר אישי ומתמשך עם מנטורים מקהילות יהודיות בעולם, שמביאים הקשבה, ניסיון חיים ונוכחות לאורך הדרך.</p></article>
+      </div>
+    </div>
+    <div class="more"><a class="textlink" href="#">להכיר את שיטת השיקום וההעצמה <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
+  </section>
+
+  <section class="stories" id="stories">
+    <div class="head" data-sr>
+      <h2>מאחורי הנתונים יש אנשים</h2>
+      <p>[כאן יוצגו שלושה סיפורים אישיים מקוריים.]</p>
+    </div>
+    <div class="ss">
+      <article class="s" data-sr><div class="ph-img" role="img" aria-label="תמונה"></div><small>שם</small><h3>כותרת</h3><p>תקציר מתוך הסיפור</p><a class="textlink" href="#" data-missing="חסר מהעמותה: סיפור עם תמונה ואישור פרסום בכתב">לסיפור המלא <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></article>
+      <article class="s" data-sr><div class="ph-img" role="img" aria-label="תמונה"></div><small>שם</small><h3>כותרת</h3><p>תקציר מתוך הסיפור</p><a class="textlink" href="#" data-missing="חסר מהעמותה: סיפור עם תמונה ואישור פרסום בכתב">לסיפור המלא <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></article>
+      <article class="s" data-sr><div class="ph-img" role="img" aria-label="תמונה"></div><small>שם</small><h3>כותרת</h3><p>תקציר מתוך הסיפור</p><a class="textlink" href="#" data-missing="חסר מהעמותה: סיפור עם תמונה ואישור פרסום בכתב">לסיפור המלא <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></article>
+    </div>
+  </section>
+
+  <section class="partners" id="partners">
+    <h2>שותפים לדרך</h2>
+    <div class="mq-row">
+      <div class="mq"><div class="mq-track">
+        <img src="../assets/partners/hadassah.webp" alt="Hadassah" width="183" height="85" style="--h:.68" loading="lazy"><img src="../assets/partners/chabad.webp" alt="Chabad" width="160" height="160" loading="lazy"><img src="../assets/partners/dispenza.webp" alt="Dr. Joe Dispenza" width="480" height="86" style="--h:.43" loading="lazy"><img src="../assets/partners/give2give.webp" alt="Give to Give" width="480" height="89" style="--h:.43" loading="lazy"><img src="../assets/partners/federations.webp" alt="Jewish Federations of North America" width="480" height="154" style="--h:.57" loading="lazy"><img src="../assets/partners/liumi.webp" alt="Liumi West Retreat" width="160" height="160" loading="lazy"><img src="../assets/partners/sheba.webp" alt="Sheba" width="313" height="160" style="--h:.71" loading="lazy"><img src="../assets/partners/reichman.webp" alt="אוניברסיטת רייכמן" width="263" height="160" style="--h:.78" loading="lazy"><img src="../assets/partners/lovingmoms.webp" alt="Loving Moms" width="251" height="160" style="--h:.8" loading="lazy"><img src="../assets/partners/susterman.webp" alt="Susterman Family Foundation" width="160" height="160" loading="lazy">
+      </div></div>
+      <button class="hpp" type="button" aria-pressed="false" aria-label="עצירת הלוגואים"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
+    </div>
+  </section>
+
+  <section class="adopt" id="adopt" data-sr>
+    <div class="adopt-txt">
+      <p class="eyebrow">המלחמה ממשיכה איתם הביתה</p>
+      <h2><span class="ln">מאמצים לוחם או לוחמת</span> <span class="ln">כדי שלא יהיו לבד.</span></h2>
+      <p>התמיכה שלכם מאפשרת לקיים את מסע השיקום וההעצמה ולהמשיך ללוות לאורך הדרך.</p>
+      <a class="pill red" href="#" data-missing="חסר מהעמותה: קישור למערכת התרומות">לתרומה <i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></i></a>
+    </div>
+    <img src="../assets/img/hug-mat.webp" alt="שני משתתפים מתחבקים אחרי שיעור יוגה" width="1200" height="800" loading="lazy">
+  </section>
+</main>
+
+<footer class="ftw ft1" id="ft1">
+  <p class="ft-line"><span class="ln">יש עוד דרך קדימה.</span> <span class="ln">הולכים בה יחד.</span></p>
+  <div class="ft1-cols"><ul><li><a href="#">שקיפות ודוחות</a></li><li><a href="#">יצירת קשר</a></li><li><a href="https://wa.me/972528011224" rel="noopener" target="_blank">וואטסאפ סופי</a></li></ul><p class="ft-todo">[פרטי העמותה]</p></div>
+  <div class="ft-legal"><p>© <span data-year>2026</span> לב אל לב ישראל</p><nav aria-label="מסמכים"><a href="#">פרטיות</a><a href="#">נגישות</a><a href="#">תנאי שימוש</a></nav><p class="ft-credit"><a href="https://liavmatzri.co.il" rel="noopener" target="_blank">עוצב ופותח על ידי ליאב מצרי</a></p></div>
+</footer>
+
+<script src="../assets/shared.js?v=202611021726"></script>
+<script>
+(function(){
+  var root=document.getElementById("hero");
+  pauseButton(root.querySelector(".hpp"),root,["עצירת התמונות הזזות","הפעלת התמונות הזזות"]);
+
+  // הכרטיס הקרוב למרכז המסך נדלק, והתמונה הדביקה מתחלפת איתו
+  var cards=[].slice.call(document.querySelectorAll(".card")),pics=[].slice.call(document.querySelectorAll(".photo img")),cur=0,raf=0;
+  function upd(){
+    raf=0;
+    var mid=innerHeight/2,best=0,bd=1e9;
+    cards.forEach(function(c,i){var r=c.getBoundingClientRect(),d=Math.abs((r.top+r.bottom)/2-mid);if(d<bd){bd=d;best=i;}});
+    if(best===cur)return;
+    cur=best;
+    cards.forEach(function(c,i){c.classList.toggle("on",i===cur);});
+    pics.forEach(function(p,i){p.classList.toggle("on",i===cur);});
+  }
+  addEventListener("scroll",function(){if(!raf)raf=requestAnimationFrame(upd);},{passive:true});
+  addEventListener("resize",upd);
+
+  // טבעות ההשפעה: נמלאות פעם אחת. בלי תנועה הן פשוט מלאות
+  var rings=document.getElementById("rings");
+  if(!calm&&"IntersectionObserver" in window){
+    rings.classList.add("anim");
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.4});
+    [].forEach.call(rings.children,function(r){io.observe(r);});
+  }
+})();
+</script>
+<script src="https://crm.liavmatzri.co.il/review.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+/* לב אל לב: בסיס משותף לשלוש הסקיצות. כל סקיצה מוסיפה עור משלה בקובץ שלה.
+   צימוד: Google Sans בלבד (בחירת ליאב, 2.11.2026). פקטור 0.95, λ 1.05. */
+@font-face{font-family:"Google Sans";src:url(fonts/GoogleSans-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Google Sans";src:url(fonts/GoogleSans-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Google Sans";src:url(fonts/GoogleSans-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+
+:root{
+  --blue:#2C479E;
+  --blue-deep:#1B2C66;
+  --night:#0F1A3D;
+  --red:#D71920;
+  --red-hover:#B8141A;
+  --ink:#131A2B;
+  --muted:#4F5870;
+  --line:#E3E6EF;
+  --white:#fff;
+
+  --gutter:clamp(24px, 5vw, 96px);
+  --sec:clamp(64px, 7vw, 160px);
+  --sec-loose:clamp(96px, 10vw, 224px);
+  --gap-s:clamp(14px, 1vw, 24px);
+  --gap-m:clamp(20px, 2vw, 48px);
+  --pad-card:clamp(24px, 2vw, 40px);
+  --measure:clamp(520px, 36vw, 860px);
+
+  --fs-h1:clamp(40px, min(4.75vw, 8.4vh) + 0.5rem, 112px);
+  --fs-h2:clamp(30px, 2.47vw + 0.4rem, 68px);
+  --fs-h3:clamp(20px, 1.14vw + 0.5rem, 32px);
+  --fs-lead:clamp(19px, 0.95vw + 0.55rem, 28px);
+  --fs-body:clamp(16px, 0.43vw + 0.65rem, 19px);
+  --fs-meta:clamp(14px, 0.52vw + 0.45rem, 17px);
+
+  --ease:cubic-bezier(.2,.6,.2,1);
+  --header-h:clamp(72px, 5.4vw, 96px);
+}
+
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Google Sans",system-ui,sans-serif;font-size:var(--fs-body);line-height:1.68;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+h1,h2,h3,p{margin:0}
+h1{font-size:var(--fs-h1);line-height:1.13;font-weight:700;letter-spacing:-.012em;text-wrap:balance}
+h2{font-size:var(--fs-h2);line-height:1.2;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h3{font-size:var(--fs-h3);line-height:1.34;font-weight:700}
+a{color:inherit}
+.ln{display:block}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px;border-radius:4px}
+main:focus{outline:0}
+
+.skip{position:absolute;inset-inline-start:16px;top:-80px;z-index:100;padding:12px 24px;background:var(--white);color:var(--ink);border-radius:12px;font-weight:500}
+.skip:focus{top:16px}
+
+/* ===== הדר: מבנה משותף, והמראה נקבע בכל סקיצה ===== */
+.hd{position:fixed;inset-inline:0;top:0;z-index:50;transition:transform .4s var(--ease),background-color .3s var(--ease),box-shadow .3s var(--ease),color .3s var(--ease)}
+.hd.is-hidden{transform:translateY(-110%)}
+.hd-in{display:flex;align-items:center;gap:clamp(16px, 2vw, 48px)}
+.hd-logo{flex:none;display:block}
+.hd-logo img{width:auto;height:100%}
+.hd-nav{display:flex;align-items:center;gap:clamp(4px, .6vw, 16px);margin-inline-start:auto;font-size:var(--fs-meta);font-weight:500}
+.hd-item{position:relative}
+.hd-link{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding-inline:clamp(8px, .7vw, 16px);text-decoration:none;white-space:nowrap;border-radius:12px;transition:opacity .2s var(--ease)}
+.hd-link svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s var(--ease)}
+.hd-item:hover .hd-link svg,.hd-item:focus-within .hd-link svg{transform:rotate(180deg)}
+.hd-sub{position:absolute;top:100%;inset-inline-start:0;min-width:280px;padding:12px;background:var(--white);color:var(--ink);border-radius:16px;box-shadow:0 4px 12px rgba(19,26,43,.06),0 24px 48px rgba(19,26,43,.12);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s}
+.hd-item:hover .hd-sub,.hd-item:focus-within .hd-sub{opacity:1;visibility:visible;transform:none}
+.hd-sub a{display:flex;align-items:center;min-height:48px;padding-inline:16px;border-radius:12px;text-decoration:none;font-weight:400}
+.hd-sub a{gap:8px}
+.hd-sub a small{font-size:inherit;color:var(--muted)}
+footer li small{font-size:inherit}
+@media (hover:hover) and (pointer:fine){.hd-sub a:hover{background:#EEF0F8}}
+.btn-donate{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding-inline:clamp(20px, 1.6vw, 32px);background:var(--red);color:var(--white);border-radius:999px;font-size:var(--fs-meta);font-weight:700;text-decoration:none;white-space:nowrap;transition:background-color .2s var(--ease)}
+@media (hover:hover) and (pointer:fine){.btn-donate:hover{background:var(--red-hover)}}
+.hd-burger{display:none;width:48px;height:48px;padding:0;border:0;border-radius:12px;background:none;color:inherit;cursor:pointer;place-items:center}
+.hd-burger svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+
+@media (max-width:1100px){
+  .hd-burger{display:grid;margin-inline-start:auto}
+  .hd.menu-open{color:var(--ink)}
+  .hd.menu-open .hd-burger path{d:path("M6 6l12 12M18 6 6 18")}
+  .hd-in{gap:8px}
+  .hd-nav{display:none;position:fixed;inset:0;z-index:-1;padding:calc(var(--header-h) + 24px) 24px 32px;margin:0;flex-direction:column;align-items:stretch;gap:4px;background:var(--white);color:var(--ink);font-size:18px;overflow:auto}
+  .hd.menu-open .hd-nav{display:flex}
+  .hd-link{min-height:52px;justify-content:space-between}
+  .hd-link svg{display:none}
+  .hd-sub{position:static;min-width:0;padding:0 16px 8px;box-shadow:none;opacity:1;visibility:visible;transform:none;background:none}
+  .hd-sub a{font-size:16px;color:var(--muted)}
+  .btn-donate{margin-top:16px}
+}
+
+/* כפתור עצירה לכל מה שזז לבד */
+.hpp{width:48px;height:48px;flex:none;border:0;border-radius:999px;display:grid;place-items:center;cursor:pointer;background:color-mix(in srgb,var(--night) 55%,transparent);color:var(--white);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:background-color .2s var(--ease)}
+.hpp svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hpp .i-play{display:none;fill:currentColor}
+.hpp[aria-pressed="true"] .i-pause{display:none}
+.hpp[aria-pressed="true"] .i-play{display:block}
+@media (hover:hover) and (pointer:fine){.hpp:hover{background:color-mix(in srgb,var(--night) 80%,transparent)}}
+
+/* כניסה: ב-keyframes, ובלי תנועה הכל פשוט גלוי */
+@keyframes rv{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){.rv{animation:rv .7s var(--ease) both;animation-delay:calc(.2s + var(--i,0) * 90ms)}}
+
+.textlink{display:inline-flex;align-items:center;gap:12px;min-height:48px;font-weight:500;text-decoration:none;color:inherit}
+.textlink svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s var(--ease)}
+@media (hover:hover) and (pointer:fine){.textlink:hover svg{transform:translateX(-4px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* גילוי בגלילה, פעם אחת. בלי סקריפט ובלי תנועה הכל גלוי */
+.sr-on [data-sr]{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+.sr-on [data-sr].in{opacity:1;transform:none}
+
+/* קרוסלת שותפים: לוגואים בגודל נראה דומה, וכפתור עצירה גלוי */
+.mq-row{display:flex;align-items:center;gap:16px}
+.mq{flex:1;min-width:0;overflow:hidden;--g:clamp(48px, 5vw, 112px);--k:clamp(56px, 5vw, 88px);-webkit-mask-image:linear-gradient(to left,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(to left,transparent,#000 5%,#000 95%,transparent)}
+.mq-track{display:flex;align-items:center;gap:var(--g);width:max-content;padding-inline-end:var(--g);animation:mq 64s linear infinite}
+.mq-track img{flex:none;width:auto;height:calc(var(--k) * var(--h, 1));mix-blend-mode:multiply}
+@keyframes mq{to{transform:translateX(50%)}}
+.mq-row.paused .mq-track{animation-play-state:paused}
+@media (hover:hover) and (pointer:fine){.mq:hover .mq-track{animation-play-state:paused}}
+@media (prefers-reduced-motion:reduce){
+  .mq{-webkit-mask-image:none;mask-image:none}
+  .mq-track{animation:none;width:auto;padding-inline-end:0;flex-wrap:wrap;justify-content:center;row-gap:32px}
+  .mq-track [aria-hidden]{display:none}
+  .mq-row .hpp{display:none}
+}
+
+/* מקום שמחכה לחומר מהעמותה: מסומן בפסים, כדי שלא ייראה כמו תוכן אמיתי */
+.ph-img{background:repeating-linear-gradient(135deg,#EEF0F8 0 12px,#E3E6EF 12px 24px)}
+
+/* הודעה בסקיצה: קישור שעוד אין לו יעד */
+.toast{position:fixed;z-index:80;inset-inline:16px;bottom:24px;margin-inline:auto;width:fit-content;max-width:min(560px, calc(100vw - 32px));padding:12px 24px;border-radius:12px;background:var(--night);color:var(--white);font-size:var(--fs-meta);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s}
+.toast.on{opacity:1;visibility:visible;transform:none}
+
+/* בסיס הפוטר: MV:ft1, ft3, ft8 */
+.ftw{font-size:var(--fs-meta);line-height:1.6}
+.ftw a{color:inherit;text-decoration:none;transition:color .15s var(--ease),opacity .15s var(--ease)}
+.ftw h3{margin:0 0 12px;font-size:var(--fs-meta);font-weight:500;opacity:.72}
+.ftw ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;align-content:start}
+.ft-line{font-size:clamp(32px, 3.6vw + 0.4rem, 88px);line-height:1.12;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+.ft-legal{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px}
+.ft-legal nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+.ft-credit{margin-inline-start:auto}
+.ft-todo{opacity:.72;align-self:start}
+@media (max-width:767px){
+  .ft-credit{margin-inline-start:0;flex-basis:100%}
+  .ftw a{display:inline-flex;align-items:center;min-height:44px}
+  .ftw ul li{display:flex;align-items:center;min-height:44px}
+  .ftw ul{gap:0}
+  .ftw .ft-todo{display:flex;align-items:center;min-height:44px}
+  .ft-legal,.ft-legal nav{row-gap:0}
+}
