@@ -6,7 +6,7 @@
 <title>לב אל לב ישראל</title>
 <link rel="preload" as="font" href="../assets/fonts/GoogleSans-Bold.woff2" type="font/woff2" crossorigin>
 <link rel="icon" href="../assets/logo/logo.webp">
-<link rel="stylesheet" href="../assets/shared.css?v=202611031509">
+<link rel="stylesheet" href="../assets/shared.css?v=202611031525">
 <style>
 /* עמוד הבית המשולב, אחרי הפידבק של שמיל (3.11.2026).
    המסגרת והפתיחה של הקלאסית (MV:s05, MV:h15, MV:hd1). מהמודרנית: קיר התמונות הרצות, הטבעות, והעוגנים.
@@ -35,12 +35,13 @@
 .sl.on img{animation:kb 9s linear forwards}
 @keyframes kb{from{transform:scale(1.06)}to{transform:scale(1)}}
 .scrim{position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(to top,rgba(15,26,61,.96) 0%,rgba(15,26,61,.9) 36%,rgba(15,26,61,.46) 58%,rgba(15,26,61,0) 78%),
+  linear-gradient(to top,rgba(15,26,61,.98) 0%,rgba(15,26,61,.96) 34%,rgba(15,26,61,.66) 48%,rgba(15,26,61,.28) 60%,rgba(15,26,61,0) 76%),
   linear-gradient(to bottom,rgba(15,26,61,.74) 0%,rgba(15,26,61,.62) 9%,rgba(15,26,61,0) 24%)}
 .foot{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--gap-m)}
 .txt{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(16px, 1.5vw, 32px);max-width:62vw}
-.line2{font-size:var(--fs-lead);line-height:1.4;font-weight:500}
-.lead{max-width:var(--measure);line-height:1.68}
+/* שלוש דרגות ולא שלושה טקסטים לבנים: כותרת לבנה, משפט בתכלת של הגרדיאנט מהמצגת, פסקה רכה ליד קו דק */
+.line2{font-size:var(--fs-lead);line-height:1.4;font-weight:500;color:#AFC1F4}
+.lead{max-width:var(--measure);line-height:1.68;color:#D5DCF3;text-wrap:pretty}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding-inline:32px;border-radius:var(--r);font-weight:500;text-decoration:none;white-space:nowrap;transition:background-color .2s var(--ease),color .2s var(--ease)}
 .btn.solid{background:var(--white);color:var(--blue-deep)}
@@ -172,9 +173,15 @@
   .txt{display:contents}
   .txt h1{grid-area:1/1}
   .line2{grid-area:2/1}
-  .lead{grid-area:1/2/3/3;justify-self:end;max-width:clamp(320px, 30vw, 720px)}
+  .lead{grid-area:1/2/3/3;justify-self:end;max-width:calc(clamp(320px, 30vw, 720px) + clamp(20px, 1.6vw, 32px));padding-inline-start:clamp(20px, 1.6vw, 32px);border-inline-start:1px solid rgba(175,193,244,.5)}
   .cta{grid-area:3/1;margin-top:0}
   .nav{grid-area:3/2;justify-self:end;align-self:center}
+}
+/* טאבלט לרוחב: הטקסט נערם וגבוה יותר, אז גם ההצללה עולה איתו */
+@media (min-width:861px) and (max-width:1099px){
+  .scrim{background:
+    linear-gradient(to top,rgba(15,26,61,.98) 0%,rgba(15,26,61,.96) 48%,rgba(15,26,61,.7) 60%,rgba(15,26,61,.26) 72%,rgba(15,26,61,0) 84%),
+    linear-gradient(to bottom,rgba(15,26,61,.74) 0%,rgba(15,26,61,.62) 9%,rgba(15,26,61,0) 24%)}
 }
 @media (max-width:1279px){
   .wall{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -191,19 +198,25 @@
   .ftw a{display:inline-flex;align-items:center;min-height:44px}
 }
 @media (max-width:860px){
-  /* בטלפון הטקסט תופס את רוב המסך: התמונה למעלה והטקסט על רקע מלא מתחתיה, כדי שלא יישב על פנים */
+  /* בטלפון התמונה למעלה והטקסט בכהה על פאנל לבן שעולה עליה בפינות עגולות: קריא, ולא יושב על פנים */
   :root{--fs-h1:clamp(24px, 7.8vw, 44px)}
-  .hero{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(140px,1fr) auto;justify-content:stretch;padding:0}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(160px,1fr) auto;justify-content:stretch;padding:0;background:var(--white);color:var(--night)}
   .sl,.scrim{grid-row:1/2;grid-column:1/-1}
   .sl{overflow:hidden}
   .scrim{background:
-    linear-gradient(to top,rgba(15,26,61,1) 0%,rgba(15,26,61,0) 28%),
+    linear-gradient(to top,rgba(15,26,61,.5) 0%,rgba(15,26,61,0) 26%),
     linear-gradient(to bottom,rgba(15,26,61,.5) 0%,rgba(15,26,61,0) 32%)}
-  .foot{grid-row:2;flex-direction:column;align-items:stretch;gap:8px;padding:12px 24px 16px}
-  .txt{max-width:none;gap:12px}
-  .cta{margin-top:4px;gap:8px}
+  .foot{grid-row:2;position:relative;flex-direction:column;align-items:stretch;margin-top:-24px;padding:28px 24px 8px;background:var(--white);border-radius:24px 24px 0 0}
+  .txt{max-width:none;gap:0}
+  .line2{margin-top:8px;font-size:clamp(16px, 5vw, 22px);color:var(--blue)}
+  .lead{margin-top:16px;line-height:1.6;color:var(--muted)}
+  .cta{margin-top:24px;gap:8px}
   .btn{min-height:48px;padding-inline:20px;flex:1}
-  .nav{width:100%}
+  .btn.solid{background:var(--blue-deep);color:var(--white)}
+  .btn.ghost{box-shadow:inset 0 0 0 1.5px var(--blue-deep);color:var(--blue-deep)}
+  @media (hover:hover) and (pointer:fine){.btn.solid:hover{background:var(--blue)}.btn.ghost:hover{background:var(--blue-deep);color:var(--white)}}
+  /* פסי המצגת נשארים על התמונה, ממש מעל הפאנל */
+  .nav{position:absolute;bottom:100%;inset-inline:24px;width:auto}
   .hd-logo{height:88px;padding:8px 12px 12px}
   /* הקיר בטלפון: שני טורים, והכרטיס נכנס מתחת לתמונות ולא עליהן */
   .wall{grid-template-columns:repeat(2,minmax(0,1fr));height:clamp(400px, 118vw, 680px)}
@@ -231,6 +244,12 @@
   .btn-donate.big{align-self:stretch}
   .ft3-top{grid-template-columns:minmax(0,1fr);gap:32px}
   .ft3-cols{justify-content:space-between}
+}
+/* טלפון נמוך: הריווח מתהדק כדי ששני הכפתורים יישארו במסך הראשון */
+@media (max-width:860px) and (max-height:660px){
+  .foot{padding-top:20px}
+  .lead{margin-top:12px;line-height:1.5}
+  .cta{margin-top:16px}
 }
 @media (prefers-reduced-motion:reduce){
   .sl.on img,.col{animation:none}
@@ -390,7 +409,7 @@
   <div class="ft-legal"><p>© <span data-year>2026</span> לב אל לב ישראל</p><nav aria-label="מסמכים"><a href="#">פרטיות</a><a href="#">נגישות</a><a href="#">תנאי שימוש</a></nav><p class="ft-credit"><a href="https://liavmatzri.co.il" rel="noopener" target="_blank">עוצב ופותח על ידי ליאב מצרי</a></p></div>
 </footer>
 
-<script src="../assets/shared.js?v=202611031509"></script>
+<script src="../assets/shared.js?v=202611031525"></script>
 <script>
 (function(){
   var rIO="IntersectionObserver" in window;
