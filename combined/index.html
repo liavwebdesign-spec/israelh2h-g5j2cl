@@ -6,13 +6,14 @@
 <title>לב אל לב ישראל</title>
 <link rel="preload" as="font" href="../assets/fonts/GoogleSans-Bold.woff2" type="font/woff2" crossorigin>
 <link rel="icon" href="../assets/logo/logo.webp">
-<link rel="stylesheet" href="../assets/shared.css?v=202611031254">
+<link rel="stylesheet" href="../assets/shared.css?v=202611031449">
 <style>
 /* עמוד הבית המשולב, אחרי הפידבק של שמיל (3.11.2026).
    המסגרת והפתיחה של הקלאסית (MV:s05, MV:h15, MV:hd1). מהמודרנית: קיר התמונות הרצות, הטבעות, והעוגנים.
    מוטיב אחד מחבר את הכול: המעגל. הקבוצה יושבת במעגל, התמונה נפתחת ממעגל, המספר נסגר במעגל, והתמונה מתחלפת במעגל.
    כחול עובד, אדום רק לתרומה, מעבר הצבע מהמצגת בטבעות וברקע של הקשר האישי. */
-:root{--tint:#F3F5FB;--r:12px;--r-lg:clamp(12px, 1.2vw, 20px)}
+/* אפור נייטרלי, בלי גוון כחול: המשטח של העוגנים ומקום השמור לתמונות */
+:root{--grey:#F0F0F1;--r:12px;--r-lg:clamp(12px, 1.2vw, 20px)}
 
 /* הדר: התפריט בימין והלוגו בשמאל, כמו ששמיל ביקש. הלוגו על לוח לבן תלוי, כי הוא בכחול ואדום ולא נקרא על כהה */
 .hd{color:var(--white)}
@@ -25,7 +26,6 @@
 .hd.is-scrolled{background:var(--white);color:var(--ink);box-shadow:0 2px 12px rgba(15,26,61,.08)}
 .hd.is-scrolled .hd-logo{box-shadow:none}
 .hd.is-hidden{transform:translateY(calc(-100% - 48px))}
-.hpp{background:rgba(15,26,61,.55)}
 
 /* הירו: מצגת מסך מלא */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--header-h) + 48px) var(--gutter) clamp(32px, 3vw, 64px);background:var(--night);color:var(--white);overflow:hidden;isolation:isolate}
@@ -60,10 +60,10 @@
 .eyebrow::before{content:"";width:32px;height:2px;background:var(--blue)}
 
 /* הדרך: קיר התמונות הרצות, והטקסט בכרטיס לבן שיושב עליו */
-.way{padding-block:var(--sec-loose) var(--sec);padding-inline:var(--gutter)}
+.way{padding-block:var(--sec) clamp(16px, 2vw, 40px);padding-inline:var(--gutter)}
 .way h2{margin-top:16px}
-.frame{position:relative;margin-top:clamp(32px, 3vw, 64px)}
-.wall{--g:clamp(8px, 1vw, 16px);position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--g);height:72vh;height:clamp(480px, 72svh, 900px);overflow:hidden;border-radius:var(--r-lg);background:var(--tint);isolation:isolate}
+.frame{position:relative;margin-top:clamp(8px, 1vw, 24px)}
+.wall{--g:clamp(8px, 1vw, 16px);position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--g);height:78vh;height:clamp(520px, 78svh, 960px);overflow:hidden;isolation:isolate;--fade:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.38) 6%,rgba(0,0,0,.82) 12%,#000 17%,#000 83%,rgba(0,0,0,.82) 88%,rgba(0,0,0,.38) 94%,transparent 100%);-webkit-mask-image:var(--fade);mask-image:var(--fade)}
 .col{display:flex;flex-direction:column;gap:var(--g);will-change:transform;animation:up 72s linear infinite}
 .col.dn{animation-name:dn;animation-duration:86s}
 .col:nth-child(3){animation-duration:80s;animation-delay:-24s}
@@ -71,27 +71,26 @@
 .col img{flex:none;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r);background:#E3E6EF}
 @keyframes up{to{transform:translateY(calc(-50% - var(--g) / 2))}}
 @keyframes dn{from{transform:translateY(calc(-50% - var(--g) / 2))}to{transform:none}}
-.wall-pp{position:absolute;inset-block-start:16px;inset-inline-end:16px;z-index:2}
 .frame.paused .col{animation-play-state:paused}
 @media (hover:hover) and (pointer:fine){.wall:hover .col{animation-play-state:paused}}
-.float{position:absolute;inset-block-end:16px;inset-inline-start:16px;z-index:1;width:min(46%, 760px);padding:var(--pad-card);display:grid;gap:12px;justify-items:start;background:var(--white);border-radius:var(--r)}
+.float{position:absolute;inset-block-end:clamp(64px, 12%, 128px);inset-inline-start:0;z-index:1;width:min(46%, 760px);padding:var(--pad-card);display:grid;gap:12px;justify-items:start;background:var(--white);border-radius:var(--r-lg);box-shadow:0 4px 12px rgba(19,26,43,.06),0 24px 48px rgba(19,26,43,.14)}
 .float .big{font-size:var(--fs-lead);line-height:1.45}
 .float p:not(.big){color:var(--muted)}
 .float .textlink{color:var(--blue)}
 
 /* הקשר האישי: שלוש תמונות באותו גודל. כל אחת נפתחת ממעגל בקצב הגלילה של הקורא, ולא זזה לבד */
-.uniq{padding-block:var(--sec-loose);padding-inline:var(--gutter);background:linear-gradient(180deg,#DCE3FA 0%,#F7F6FE 100%)}
-.uniq h2{margin-top:16px;max-width:22ch}
-.us{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(48px, 5vw, 112px)}
+.uniq{padding-block:var(--sec) clamp(48px, 5vw, 96px);padding-inline:var(--gutter);background:linear-gradient(180deg,#FFF 0%,#E4E9FB 26%,#EDF0FC 68%,#FFF 100%)}
+.uniq h2{margin-top:16px}
+.us{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(32px, 3.2vw, 72px)}
 .u-fig{--ix:20%;--iy:26%;margin:0;aspect-ratio:4/5;overflow:hidden;-webkit-clip-path:inset(calc(var(--iy) * (1 - var(--p, 1))) calc(var(--ix) * (1 - var(--p, 1))) round calc((1 - var(--p, 1)) * 400px + 12px));clip-path:inset(calc(var(--iy) * (1 - var(--p, 1))) calc(var(--ix) * (1 - var(--p, 1))) round calc((1 - var(--p, 1)) * 400px + 12px))}
 .u-fig img{width:100%;height:100%;object-fit:cover;transform:scale(calc(1.12 - .12 * var(--p, 1)))}
 .u h3{margin-top:clamp(20px, 1.6vw, 32px)}
 .u p{margin-top:8px;max-width:40ch;color:var(--muted)}
 
 /* ההשפעה: הרגע הגדול של העמוד. הטבעת נסגרת והמספר עולה יחד, פעם אחת */
-.impact{padding-block:var(--sec-loose);padding-inline:var(--gutter)}
-.impact h2{margin-top:16px;max-width:18ch}
-.rings{--ring:clamp(240px, 25vw, 600px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(48px, 5vw, 112px)}
+.impact{padding-block:clamp(32px, 3.2vw, 72px) var(--sec);padding-inline:var(--gutter)}
+.impact h2{margin-top:16px}
+.rings{--ring:clamp(220px, 21vw, 520px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(32px, 3.2vw, 72px)}
 .ring{position:relative;width:min(100%, var(--ring))}
 .ring svg{width:100%;height:auto;overflow:visible}
 .ring circle{fill:none;stroke-width:8}
@@ -104,58 +103,67 @@
 .ring b{position:absolute;inset:0;display:grid;place-items:center;direction:ltr;font-size:calc(var(--ring) * .26);line-height:1;font-weight:700;letter-spacing:-.03em;color:var(--blue-deep);font-variant-numeric:tabular-nums}
 .r h3{margin-top:clamp(20px, 1.8vw, 40px)}
 .r p{margin-top:8px;max-width:34ch;color:var(--muted)}
-.src{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px var(--gap-m);margin-top:clamp(48px, 4vw, 96px)}
-.src small{font-size:var(--fs-meta);color:var(--muted);max-width:var(--measure)}
+.src{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px var(--gap-m);margin-top:clamp(32px, 3vw, 72px)}
+.src small{font-size:var(--fs-meta);color:var(--muted)}
 .src .textlink{color:var(--blue)}
 
-/* השיטה: פס כחול אחד בעמוד. הכרטיס שבמרכז המסך נדלק, והתמונה הדביקה מתחלפת במעגל שנפתח */
-.method{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px, 6vw, 128px);align-items:start;padding-block:var(--sec-loose);padding-inline:var(--gutter);background:var(--blue-deep);color:var(--white)}
-.method .eyebrow{color:#C9D3F4}
-.method .eyebrow::before{background:#C9D3F4}
+/* השיטה: רקע אפור נייטרלי וכרטיסים לבנים. הכרטיס שבמרכז המסך מתעורר, והתמונה הדביקה מתחלפת במעגל שנפתח */
+.method{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px, 5vw, 112px);align-items:start;padding-block:var(--sec);padding-inline:var(--gutter);background:var(--grey)}
 .method h2{margin-top:16px}
-.method-head>p:not(.eyebrow){margin-top:16px;max-width:38ch;color:#E6EAF8}
-.cards{display:flex;flex-direction:column;gap:clamp(24px, 16vh, 160px);padding-block:clamp(40px, 8vh, 96px) clamp(24px, 6vh, 64px)}
-.card{padding:var(--pad-card);border-radius:var(--r-lg);background:rgba(255,255,255,.07);transition:background-color .5s var(--ease),color .5s var(--ease)}
+.method-head>p:not(.eyebrow){margin-top:16px;max-width:38ch;color:var(--muted)}
+.method .textlink{color:var(--blue)}
+.cards{display:flex;flex-direction:column;gap:clamp(12px, 2.4vh, 24px);padding-block:clamp(24px, 4vh, 48px) clamp(20px, 3vh, 32px)}
+.card{padding:var(--pad-card);border-radius:var(--r-lg);background:var(--white);transition:box-shadow .5s var(--ease)}
 .card img{display:none}
 .card h3{font-size:clamp(26px, 2vw + 0.4rem, 52px);line-height:1.2;letter-spacing:-.01em}
-.card h3 span{display:block;margin-top:4px;font-size:var(--fs-lead);line-height:1.4;font-weight:500;letter-spacing:0;color:#C9D3F4;transition:color .5s var(--ease)}
-.card p{margin-top:16px;max-width:46ch;color:#E6EAF8;transition:color .5s var(--ease)}
-.card.on{background:var(--white);color:var(--ink)}
+.card h3{color:var(--muted);transition:color .5s var(--ease)}
+.card h3 span{display:block;margin-top:4px;font-size:var(--fs-lead);line-height:1.4;font-weight:500;letter-spacing:0;color:var(--muted);transition:color .5s var(--ease)}
+.card p{margin-top:12px;max-width:46ch;color:var(--muted)}
+.card.on{box-shadow:0 4px 12px rgba(19,26,43,.05),0 20px 40px rgba(19,26,43,.09)}
+.card.on h3{color:var(--ink)}
 .card.on h3 span{color:var(--blue)}
-.card.on p{color:var(--muted)}
-.photo{position:sticky;top:calc(var(--header-h) + 24px);height:calc(100vh - var(--header-h) - 48px);height:calc(100svh - var(--header-h) - 48px);max-height:880px;border-radius:var(--r-lg);overflow:hidden;background:var(--night);isolation:isolate}
+.photo{position:sticky;top:calc(var(--header-h) + 24px);height:calc(100vh - var(--header-h) - 48px);height:calc(100svh - var(--header-h) - 48px);max-height:880px;border-radius:var(--r-lg);overflow:hidden;background:var(--grey);isolation:isolate}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;-webkit-clip-path:circle(0% at 50% 50%);clip-path:circle(0% at 50% 50%);transition:-webkit-clip-path 1s var(--ease),clip-path 1s var(--ease)}
 .photo img.was{z-index:1;-webkit-clip-path:circle(75% at 50% 50%);clip-path:circle(75% at 50% 50%);transition:none}
 .photo img.on{z-index:2;-webkit-clip-path:circle(75% at 50% 50%);clip-path:circle(75% at 50% 50%)}
 
 /* סיפורים: מקום שמור, עד שיגיעו סיפורים ואישורי פרסום */
-.stories{padding-block:var(--sec-loose) var(--sec);padding-inline:var(--gutter)}
+.stories{padding-block:var(--sec) clamp(48px, 5vw, 96px);padding-inline:var(--gutter)}
 .stories-note{margin-top:12px;max-width:var(--measure);color:var(--muted)}
-.ss{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(40px, 4vw, 96px)}
-.s .ph-img{aspect-ratio:3/2;border-radius:var(--r)}
+.ss{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(32px, 3.2vw, 72px)}
+.s .ph-img{aspect-ratio:3/2;border-radius:var(--r);background:linear-gradient(180deg,#C5D1F6 0%,#F3F1FE 100%)}
 .s small{display:block;margin-top:clamp(16px, 1.4vw, 28px);font-size:var(--fs-meta);font-weight:500;color:var(--blue)}
 .s p{margin-top:8px;color:var(--muted)}
 .s .textlink{margin-top:8px;color:var(--blue)}
 
-/* שותפים: רצועה לבנה אחת על הגוון */
-.partners{padding-block:var(--sec);padding-inline:var(--gutter);background:var(--tint);text-align:center}
-.partners .mq-row{margin-top:clamp(32px, 3vw, 64px);padding:clamp(16px, 1.4vw, 32px) clamp(16px, 2vw, 40px);background:var(--white);border-radius:var(--r-lg)}
+/* שותפים: הכותרת בצד, והלוגואים באותו אפור רצים עד קצה המסך ונמסים בשני הצדדים. בהובר הצבע חוזר והתנועה נעצרת */
+.partners{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);align-items:center;gap:var(--gap-m);padding-block:clamp(32px, 3vw, 64px) clamp(72px, 7vw, 144px);padding-inline-start:var(--gutter)}
+.partners .mq{--g:clamp(56px, 5.4vw, 128px);--k:clamp(64px, 5.4vw, 112px);-webkit-mask-image:linear-gradient(to left,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to left,transparent,#000 12%,#000 88%,transparent)}
+.partners .mq-track img{mix-blend-mode:normal;filter:url(#logoTone);opacity:.8;transition:opacity .3s var(--ease)}
+@media (hover:hover) and (pointer:fine){.partners .mq-track img:hover{filter:none;opacity:1}}
 
-/* קריאה לאימוץ: על לבן, כדי שהכפתור האדום יהיה הדבר החזק במסך */
-.adopt{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
-.adopt-txt{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:clamp(16px, 1.4vw, 32px);padding-block:var(--sec-loose);padding-inline:var(--gutter)}
-.adopt-txt>p:not(.eyebrow){max-width:var(--measure)}
-.adopt-img{min-height:clamp(320px, 42vw, 860px);position:relative;overflow:hidden;border-start-start-radius:var(--r-lg);border-end-start-radius:var(--r-lg)}
-.adopt-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* קריאה לאימוץ: הסוף של העמוד. התמונה נמסה לתוך הכחול של הפוטר, וביחד הם בלוק אחד שסוגר בפינות מעוגלות */
+.adopt{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:clamp(440px, 44vw, 920px);background:var(--night);color:var(--white);border-start-start-radius:clamp(24px, 3vw, 56px);border-start-end-radius:clamp(24px, 3vw, 56px);overflow:hidden;isolation:isolate}
+.adopt-txt{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:clamp(16px, 1.4vw, 32px);padding-block:clamp(64px, 6vw, 128px) clamp(32px, 3vw, 64px);padding-inline:var(--gutter) 0}
+.adopt .eyebrow{color:#C9D3F4}
+.adopt .eyebrow::before{background:#C9D3F4}
+.adopt h2{font-size:clamp(30px, 3.2vw + 0.4rem, 76px);line-height:1.15}
+.adopt-txt>p:not(.eyebrow){max-width:44ch;color:#E6EAF8}
+.adopt-img{position:absolute;inset-block:0;inset-inline-end:0;width:58%;z-index:-1}
+.adopt-img img{width:100%;height:100%;object-fit:cover;object-position:62% 30%;filter:saturate(.86)}
+.adopt-img::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(to right,rgba(15,26,61,.06) 0%,rgba(15,26,61,.06) 38%,rgba(15,26,61,.42) 60%,rgba(15,26,61,.84) 76%,rgba(15,26,61,.97) 88%,#0F1A3D 96%),
+  linear-gradient(to top,#0F1A3D 0%,rgba(15,26,61,0) 34%),
+  linear-gradient(to bottom,rgba(15,26,61,.62) 0%,rgba(15,26,61,0) 30%)}
 .btn-donate.big{min-height:60px;padding-inline:40px;font-size:var(--fs-body);border-radius:var(--r);margin-top:8px}
 
 /* פוטר MV:ft3 */
-.ft3{display:grid;gap:clamp(48px, 4vw, 96px);padding:var(--sec) var(--gutter) 32px;background:var(--night);color:#F3F5FB}
-.ft3-top{display:grid;grid-template-columns:1.3fr 3fr;gap:clamp(40px, 5vw, 112px)}
-.ft3-brand{display:grid;gap:clamp(16px, 1.6vw, 32px);align-content:start;justify-items:start}
-.ft3-logo{display:block;width:clamp(96px, 7vw, 136px);padding:12px;background:var(--white);border-radius:var(--r)}
-.ft3-brand .ft-line{font-size:var(--fs-lead);line-height:1.4;font-weight:500;letter-spacing:0}
-.ft3-cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap-m)}
+.ft3{display:grid;gap:clamp(32px, 3vw, 64px);padding:clamp(40px, 4vw, 72px) var(--gutter) 32px;background:var(--night);color:#F3F5FB}
+.ft3-top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:clamp(40px, 5vw, 112px)}
+.ft3-brand{display:flex;align-items:center;gap:clamp(20px, 2vw, 40px)}
+.ft3-logo{flex:none;display:block;width:clamp(80px, 6vw, 128px);padding:10px;background:var(--white);border-radius:var(--r)}
+.ft3-brand .ft-line{font-size:clamp(20px, 1.5vw + 0.2rem, 36px);line-height:1.3;font-weight:500;letter-spacing:0}
+.ft3-cols{display:grid;grid-template-columns:auto auto;column-gap:clamp(48px, 6vw, 128px)}
 @media (hover:hover) and (pointer:fine){.ft3 a:hover{color:#C9D3F4}}
 
 /* במסך רחב הפסקה והכפתורים לא נערמים על הכותרת: הכותרת יורדת ולא יושבת על פנים של אנשים בתמונה. סדר הקריאה לא משתנה */
@@ -198,28 +206,35 @@
   .nav{width:100%}
   .hd-logo{height:88px;padding:8px 12px 12px}
   /* הקיר בטלפון: שני טורים, והכרטיס נכנס מתחת לתמונות ולא עליהן */
-  .wall{grid-template-columns:repeat(2,minmax(0,1fr));height:clamp(380px, 112vw, 640px)}
+  .wall{grid-template-columns:repeat(2,minmax(0,1fr));height:clamp(400px, 118vw, 680px)}
   .col:nth-child(3){display:none}
-  .wall-pp{inset-block-start:12px;inset-inline-end:12px}
-  .float{position:relative;inset:auto;width:auto;margin:12px 0 0;box-shadow:0 12px 32px rgba(15,26,61,.1)}
+  .float{position:relative;inset:auto;width:auto;margin:0;padding:8px 0 0;background:none;box-shadow:none}
+  .float p{max-width:var(--measure)}
   .us,.ss{grid-template-columns:minmax(0,1fr);gap:clamp(32px, 8vw, 48px)}
   .u-fig{--ix:30%;--iy:20%;aspect-ratio:3/2}
   .method{grid-template-columns:minmax(0,1fr)}
   .photo{display:none}
-  .cards{gap:16px;padding-block:32px 8px}
+  .cards{gap:16px;padding-block:24px 8px}
   .card{padding:0 0 24px;overflow:hidden}
   .card img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;margin-bottom:20px}
   .card h3,.card p{margin-inline:20px}
-  .adopt{grid-template-columns:minmax(0,1fr)}
-  .adopt-img{order:-1;min-height:0;aspect-ratio:3/2;border-radius:0}
-  .adopt-txt{padding-block:var(--sec)}
+  .card,.card.on{box-shadow:none}
+  .card h3{color:var(--ink)}
+  .card h3 span{color:var(--blue)}
+  .adopt{grid-template-columns:minmax(0,1fr);min-height:0}
+  .adopt-img{position:relative;inset:auto;width:auto;aspect-ratio:3/2;order:-1;z-index:0}
+  .adopt-img img{object-position:50% 30%}
+  .adopt-img::after{background:linear-gradient(to top,#0F1A3D 0%,rgba(15,26,61,0) 42%),linear-gradient(to bottom,rgba(15,26,61,.5) 0%,rgba(15,26,61,0) 30%)}
+  .adopt-txt{padding-block:8px 24px;padding-inline:var(--gutter)}
+  .partners{grid-template-columns:minmax(0,1fr);padding-inline:0;gap:24px}
+  .partners h2{padding-inline:var(--gutter);text-align:center}
   .btn-donate.big{align-self:stretch}
-  .ft3-top{grid-template-columns:minmax(0,1fr)}
+  .ft3-top{grid-template-columns:minmax(0,1fr);gap:32px}
+  .ft3-cols{justify-content:space-between}
 }
 @media (prefers-reduced-motion:reduce){
   .sl.on img,.col{animation:none}
   .sl,.sl.on{transition:none}
-  .wall-pp{display:none}
 }
 </style>
 </head>
@@ -260,7 +275,6 @@
         <button class="tab" type="button" aria-label="תמונה 1" aria-current="true"><span class="bar"><i></i></span></button>
         <button class="tab" type="button" aria-label="תמונה 2" aria-current="false"><span class="bar"><i></i></span></button>
         <button class="tab" type="button" aria-label="תמונה 3" aria-current="false"><span class="bar"><i></i></span></button>
-        <button class="hpp" type="button" aria-pressed="false" aria-label="עצירת המצגת"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
       </div>
     </div>
   </section>
@@ -277,7 +291,6 @@
         <div class="col" aria-hidden="true"><img data-src="../assets/img/bikes.webp" alt=""><img data-src="../assets/img/umbrella.webp" alt=""><img data-src="../assets/img/beach.webp" alt=""><img data-src="../assets/img/banner.webp" alt=""></div>
         <div class="col dn" aria-hidden="true"><img data-src="../assets/img/yoga-hall.webp" alt=""><img data-src="../assets/img/group-sofas.webp" alt=""><img data-src="../assets/img/group-flag.webp" alt=""><img data-src="../assets/img/group-sunset.webp" alt=""></div>
       </div>
-      <button class="hpp wall-pp" type="button" aria-pressed="false" aria-label="עצירת התמונות הזזות"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
       <div class="float">
         <p class="big">החזרה הביתה היא תחילתה של דרך שלעיתים נמשכת שנים. ההתמודדות נוכחת בשינה, במערכות היחסים, בעבודה ובשגרה היומיומית.</p>
         <p>המסע בלב אל לב מעניק מסגרת מתמשכת שבה אפשר לבנות אמון, למצוא אנשים שמבינים, לפתח כלים ולהתקדם בקצב אישי.</p>
@@ -348,13 +361,13 @@
     </div>
   </section>
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="logoTone" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="gamma" exponent="1.7"/><feFuncG type="gamma" exponent="1.7"/><feFuncB type="gamma" exponent="1.7"/></feComponentTransfer></filter></svg>
   <section class="partners" id="partners">
-    <h2>שותפים לדרך</h2>
+    <h2 data-sr>שותפים לדרך</h2>
     <div class="mq-row">
       <div class="mq"><div class="mq-track">
-        <img src="../assets/partners/hadassah.webp" alt="Hadassah" width="183" height="85" style="--h:.68" loading="lazy"><img src="../assets/partners/chabad.webp" alt="Chabad" width="160" height="160" loading="lazy"><img src="../assets/partners/dispenza.webp" alt="Dr. Joe Dispenza" width="480" height="86" style="--h:.43" loading="lazy"><img src="../assets/partners/give2give.webp" alt="Give to Give" width="480" height="89" style="--h:.43" loading="lazy"><img src="../assets/partners/federations.webp" alt="Jewish Federations of North America" width="480" height="154" style="--h:.57" loading="lazy"><img src="../assets/partners/liumi.webp" alt="Liumi West Retreat" width="160" height="160" loading="lazy"><img src="../assets/partners/sheba.webp" alt="Sheba" width="313" height="160" style="--h:.71" loading="lazy"><img src="../assets/partners/reichman.webp" alt="אוניברסיטת רייכמן" width="263" height="160" style="--h:.78" loading="lazy"><img src="../assets/partners/lovingmoms.webp" alt="Loving Moms" width="251" height="160" style="--h:.8" loading="lazy"><img src="../assets/partners/susterman.webp" alt="Susterman Family Foundation" width="160" height="160" loading="lazy">
+        <img src="../assets/partners/hadassah.webp" alt="Hadassah" width="183" height="85" style="--h:.68" loading="lazy"><img src="../assets/partners/chabad.webp" alt="Chabad" width="160" height="160" loading="lazy"><img src="../assets/partners/dispenza.webp" alt="Dr. Joe Dispenza" width="384" height="69" style="--h:.43" loading="lazy"><img src="../assets/partners/give2give.webp" alt="Give to Give" width="480" height="89" style="--h:.43" loading="lazy"><img src="../assets/partners/federations.webp" alt="Jewish Federations of North America" width="480" height="154" style="--h:.57" loading="lazy"><img src="../assets/partners/liumi.webp" alt="Liumi West Retreat" width="160" height="160" loading="lazy"><img src="../assets/partners/sheba.webp" alt="Sheba" width="313" height="160" style="--h:.71" loading="lazy"><img src="../assets/partners/reichman.webp" alt="אוניברסיטת רייכמן" width="263" height="160" style="--h:.78" loading="lazy"><img src="../assets/partners/lovingmoms.webp" alt="Loving Moms" width="217" height="160" style="--h:.8" loading="lazy"><img src="../assets/partners/susterman.webp" alt="Susterman Family Foundation" width="160" height="160" loading="lazy">
       </div></div>
-      <button class="hpp" type="button" aria-pressed="false" aria-label="עצירת הלוגואים"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
     </div>
   </section>
 
@@ -377,15 +390,15 @@
   <div class="ft-legal"><p>© <span data-year>2026</span> לב אל לב ישראל</p><nav aria-label="מסמכים"><a href="#">פרטיות</a><a href="#">נגישות</a><a href="#">תנאי שימוש</a></nav><p class="ft-credit"><a href="https://liavmatzri.co.il" rel="noopener" target="_blank">עוצב ופותח על ידי ליאב מצרי</a></p></div>
 </footer>
 
-<script src="../assets/shared.js?v=202611031254"></script>
+<script src="../assets/shared.js?v=202611031449"></script>
 <script>
 (function(){
   var rIO="IntersectionObserver" in window;
 
   // הירו: המצגת של הקלאסית
-  var root=document.getElementById("hero"),sl=[].slice.call(root.querySelectorAll(".sl")),tabs=[].slice.call(root.querySelectorAll(".tab")),pp=root.querySelector(".hpp"),cur=0;
+  var root=document.getElementById("hero"),sl=[].slice.call(root.querySelectorAll(".sl")),tabs=[].slice.call(root.querySelectorAll(".tab")),nav=root.querySelector(".nav"),hov=false,foc=false,cur=0;
   var auto=!calm;
-  if(!auto){root.classList.add("still");pp.hidden=true;}
+  if(!auto)root.classList.add("still");
   function go(n){
     cur=(n+sl.length)%sl.length;
     sl.forEach(function(s,k){s.classList.toggle("on",k===cur);s.setAttribute("aria-hidden",String(k!==cur));});
@@ -396,7 +409,12 @@
     t.addEventListener("click",function(){go(k);});
     t.querySelector("i").addEventListener("animationend",function(){if(auto&&k===cur)go(cur+1);});
   });
-  pauseButton(pp,root,["עצירת המצגת","הפעלת המצגת"]);
+  // אין כפתור עצירה: העכבר על הפסים או בחירת תמונה מהמקלדת עוצרים את המצגת. עצירה מלאה תהיה בסרגל הנגישות
+  function hold(){root.classList.toggle("paused",hov||foc);}
+  nav.addEventListener("mouseenter",function(){hov=true;hold();});
+  nav.addEventListener("mouseleave",function(){hov=false;hold();});
+  nav.addEventListener("focusin",function(){foc=true;hold();});
+  nav.addEventListener("focusout",function(){foc=false;hold();});
 
   // קיר התמונות: התמונות נטענות רק כשמתקרבים, ורק לטורים שמוצגים בגודל המסך הזה. כל טור מוכפל לשם הלולאה
   var wall=document.getElementById("wall"),frame=document.getElementById("wallFrame"),cols=[].slice.call(wall.querySelectorAll(".col")),near=false;
@@ -412,7 +430,10 @@
   if(rIO){var wio=new IntersectionObserver(function(es){if(es[0].isIntersecting){near=true;fill();wio.disconnect();}},{rootMargin:"120% 0px"});wio.observe(wall);}
   else{near=true;fill();}
   addEventListener("resize",fill);
-  pauseButton(frame.querySelector(".wall-pp"),frame,["עצירת התמונות הזזות","הפעלת התמונות הזזות"]);
+  // נגיעה בקיר או בלוגואים עוצרת אותם ומפעילה שוב. בעכבר הם נעצרים בהובר
+  wall.addEventListener("click",function(){frame.classList.toggle("paused");});
+  var mqRow=document.querySelector(".mq-row");
+  mqRow.addEventListener("click",function(){mqRow.classList.toggle("paused");});
 
   // הקשר האישי: כל תמונה נפתחת ממעגל לפי הגלילה. בלי תנועה, ובלי סקריפט, היא פשוט פתוחה
   var figs=[].slice.call(document.querySelectorAll(".u-fig")),rf=0;
