@@ -6,7 +6,7 @@
 <title>לב אל לב ישראל</title>
 <link rel="preload" as="font" href="../assets/fonts/GoogleSans-Bold.woff2" type="font/woff2" crossorigin>
 <link rel="icon" href="../assets/logo/logo.webp">
-<link rel="stylesheet" href="../assets/shared.css?v=202611041154">
+<link rel="stylesheet" href="../assets/shared.css?v=202611041206">
 <style>
 /* עמוד הבית המשולב, אחרי הפידבק של שמיל (3.11.2026).
    המסגרת והפתיחה של הקלאסית (MV:s05, MV:h15, MV:hd1). מהמודרנית: קיר התמונות הרצות, הטבעות, והעוגנים.
@@ -20,9 +20,52 @@
 .hd-in{padding-inline:var(--gutter);height:var(--header-h);align-items:flex-start}
 .hd-nav{height:100%;margin-inline-start:calc(clamp(8px, .7vw, 16px) * -1)}
 .hd-logo{margin-inline-start:auto;height:calc(var(--header-h) + 28px);padding:12px 16px 16px;background:var(--white);border-radius:0 0 16px 16px;box-shadow:0 12px 32px rgba(15,26,61,.18)}
-.hd-burger{margin-block:12px;margin-inline-start:0}
-.hd-burger .i-x,.hd.menu-open .hd-burger .i-b{display:none}
-.hd.menu-open .hd-burger .i-x{display:block}
+.hd-burger{margin-block:12px;margin-inline-start:-12px}
+.hd-more{display:none}
+/* אייקון התפריט: קו ארוך, קו קצר ולב קטן מהלוגו. בפתיחה הלב נעלם והקווים נסגרים לאיקס */
+.bg{position:relative;display:block;width:24px;height:24px}
+.bg i,.bg b{position:absolute;display:block}
+.bg i{height:1.5px;border-radius:2px;background:currentColor;transition:transform .55s cubic-bezier(.22,1,.36,1),width .55s cubic-bezier(.22,1,.36,1)}
+.bg i:nth-child(1){top:7px;inset-inline-start:2px;width:20px}
+.bg i:nth-child(2){top:15px;inset-inline-start:2px;width:11px}
+.bg b{top:11.5px;inset-inline-end:2px;width:8.5px;height:8.5px;background:currentColor;-webkit-mask:var(--heart) center/contain no-repeat;mask:var(--heart) center/contain no-repeat;transition:opacity .25s var(--ease),transform .4s var(--ease)}
+.hd.menu-open .bg i:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.hd.menu-open .bg i:nth-child(2){width:20px;transform:translateY(-4px) rotate(-45deg)}
+.hd.menu-open .bg b{opacity:0;transform:scale(.3)}
+
+/* התפריט בטלפון ובטאבלט: לוח שיורד מההדר ומתקפל לפי התוכן, לא מסך לבן מלא */
+@media (max-width:1100px){
+  .hd::after{content:"";position:fixed;inset:0;z-index:-2;background:rgba(15,26,61,.5);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility 0s linear .35s}
+  .hd.menu-open::after{opacity:1;visibility:visible;transition:opacity .6s var(--ease),visibility 0s}
+  .hd.menu-open{background:none;box-shadow:none}
+  .hd.menu-open .hd-logo{box-shadow:none}
+  .hd-nav,.hd.menu-open .hd-nav{display:flex;position:fixed;inset:0 0 auto 0;z-index:-1;height:auto;max-height:100vh;max-height:100dvh;margin:0;padding:calc(var(--header-h) + 28px) var(--gutter) 24px;flex-direction:column;align-items:stretch;gap:0;background:var(--white);color:var(--ink);font-size:16px;overflow:auto;overscroll-behavior:contain;border-radius:0 0 24px 24px}
+  .hd-nav{visibility:hidden;-webkit-clip-path:inset(0 0 100% 0 round 0 0 24px 24px);clip-path:inset(0 0 100% 0 round 0 0 24px 24px);transition:clip-path .4s cubic-bezier(.4,0,.6,1),-webkit-clip-path .4s cubic-bezier(.4,0,.6,1),visibility 0s linear .4s}
+  .hd.menu-open .hd-nav{visibility:visible;-webkit-clip-path:inset(0 0 0 0 round 0 0 24px 24px);clip-path:inset(0 0 0 0 round 0 0 24px 24px);transition:clip-path .8s cubic-bezier(.22,1,.36,1),-webkit-clip-path .8s cubic-bezier(.22,1,.36,1),visibility 0s}
+  /* השורות עולות אחת אחרי השנייה, ובסגירה נעלמות יחד */
+  .hd-nav>*{opacity:0;transform:translateY(10px);transition:opacity .2s var(--ease),transform .2s var(--ease)}
+  .hd.menu-open .hd-nav>*{opacity:1;transform:none;transition:opacity .6s var(--ease) var(--d),transform .8s cubic-bezier(.22,1,.36,1) var(--d)}
+  .hd-nav>:nth-child(1){--d:.14s}.hd-nav>:nth-child(2){--d:.19s}.hd-nav>:nth-child(3){--d:.24s}.hd-nav>:nth-child(4){--d:.29s}.hd-nav>:nth-child(5){--d:.34s}.hd-nav>:nth-child(6){--d:.4s}
+  .hd-item{display:grid;grid-template-columns:1fr 48px;align-items:center;border-top:1px solid rgba(19,26,43,.09)}
+  .hd-nav>.hd-item:first-child{border-top:0}
+  .hd-link{grid-column:1;min-height:50px;padding-inline:0;justify-content:flex-start;white-space:normal;font-weight:500}
+  .hd-item:not(:has(.hd-more)) .hd-link{grid-column:1/-1}
+  .hd-link[aria-current]{color:var(--blue)}
+  .hd-more{display:grid;grid-column:2;place-items:center;width:48px;height:48px;margin-inline-end:-16px;justify-self:end;padding:0;border:0;background:none;color:var(--blue);cursor:pointer}
+  .hd-more span{position:relative;display:block;width:13px;height:13px}
+  .hd-more span::before,.hd-more span::after{content:"";position:absolute;inset-inline:0;top:5.75px;height:1.5px;border-radius:2px;background:currentColor;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+  .hd-more span::after{transform:rotate(90deg)}
+  .hd-item.open .hd-more span::before{transform:rotate(180deg)}
+  .hd-item.open .hd-more span::after{transform:rotate(180deg)}
+  /* עמודי המשנה נפתחים בלחיצה על הפלוס, אחד בכל פעם */
+  .hd-sub,.hd-item:hover .hd-sub,.hd-item:focus-within .hd-sub{grid-column:1/-1;display:grid;grid-template-rows:0fr;position:static;min-width:0;padding:0;background:none;box-shadow:none;border-radius:0;opacity:0;visibility:hidden;transform:none;transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1),opacity .3s var(--ease),visibility 0s linear .45s}
+  .hd-item.open .hd-sub,.hd-item.open:hover .hd-sub,.hd-item.open:focus-within .hd-sub{grid-template-rows:1fr;opacity:1;visibility:visible;transition:grid-template-rows .55s cubic-bezier(.22,1,.36,1),opacity .45s var(--ease) .08s,visibility 0s}
+  .hd-sub>div{min-height:0;overflow:hidden}
+  .hd-sub a{min-height:42px;padding-inline:14px 0;font-size:15px;line-height:1.35;color:var(--muted);border-radius:0}
+  .hd-sub>div>a:last-child{margin-bottom:10px}
+  .hd-nav .btn-donate{width:100%;min-height:50px;margin-top:12px;font-size:16px;border-radius:var(--r)}
+}
+@media (max-width:1100px) and (prefers-reduced-motion:reduce){.hd-nav>*,.hd.menu-open .hd-nav>*{transition-delay:0s}}
 .hd.is-scrolled{background:var(--white);color:var(--ink);box-shadow:0 2px 12px rgba(15,26,61,.08)}
 .hd.is-scrolled .hd-logo{box-shadow:none}
 .hd.is-hidden{transform:translateY(calc(-100% - 48px))}
@@ -288,13 +331,13 @@
 
 <header class="hd">
   <div class="hd-in">
-    <button aria-controls="hdNav" class="hd-burger" type="button" aria-expanded="false" aria-label="פתיחת התפריט"><svg class="i-b" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="i-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button aria-controls="hdNav" class="hd-burger" type="button" aria-expanded="false" aria-label="פתיחת התפריט"><span class="bg" aria-hidden="true"><i></i><i></i><b></b></span></button>
     <nav id="hdNav" class="hd-nav" aria-label="ראשי">
       <div class="hd-item"><a class="hd-link" href="./" aria-current="page">דף הבית</a></div>
-      <div class="hd-item"><a class="hd-link" href="#">מסע השיקום וההעצמה <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5"/></svg></a>
-        <div class="hd-sub"><a href="#">התוכנית האזורית</a><a href="#"><span>הדסה</span> <small>במעגל החיים</small></a><a href="#">התוכנית הכללית</a><a href="#">אחיות שבלב</a><a href="#">קהילת הבוגרים</a></div></div>
-      <div class="hd-item"><a class="hd-link" href="#">מי אנחנו <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5"/></svg></a>
-        <div class="hd-sub"><a href="#">האנשים שמאחורי לב אל לב</a><a href="#">השגרירים שלנו</a><a href="#">שקיפות ודוחות</a></div></div>
+      <div class="hd-item"><a class="hd-link" href="#">מסע השיקום וההעצמה <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5"/></svg></a><button class="hd-more" type="button" aria-expanded="false" aria-label="עמודי המשנה של מסע השיקום וההעצמה"><span aria-hidden="true"></span></button>
+        <div class="hd-sub"><div><a href="#">התוכנית האזורית</a><a href="#"><span>הדסה</span> <small>במעגל החיים</small></a><a href="#">התוכנית הכללית</a><a href="#">אחיות שבלב</a><a href="#">קהילת הבוגרים</a></div></div></div>
+      <div class="hd-item"><a class="hd-link" href="#">מי אנחנו <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5"/></svg></a><button class="hd-more" type="button" aria-expanded="false" aria-label="עמודי המשנה של מי אנחנו"><span aria-hidden="true"></span></button>
+        <div class="hd-sub"><div><a href="#">האנשים שמאחורי לב אל לב</a><a href="#">השגרירים שלנו</a><a href="#">שקיפות ודוחות</a></div></div></div>
       <div class="hd-item"><a class="hd-link" href="#">ההשפעה שלנו</a></div>
       <div class="hd-item"><a class="hd-link" href="#">יצירת קשר</a></div>
       <a class="btn-donate" href="https://israelheart2heart.crowdchange.co/47432" rel="noopener" target="_blank">לתרומה</a>
@@ -435,7 +478,7 @@
   <div class="ft-legal"><p>© <span data-year>2026</span> לב אל לב ישראל</p><nav aria-label="מסמכים"><a href="#" data-missing="חסר מהעמותה: נוסח מדיניות הפרטיות">פרטיות</a><a href="#">נגישות</a><a href="#" data-missing="חסר מהעמותה: נוסח תנאי השימוש">תנאי שימוש</a></nav><p class="ft-credit"><a href="https://liavmatzri.co.il" rel="noopener" target="_blank">עוצב ופותח על ידי ליאב מצרי</a></p></div>
 </footer>
 
-<script src="../assets/shared.js?v=202611041154"></script>
+<script src="../assets/shared.js?v=202611041206"></script>
 <script>
 (function(){
   var rIO="IntersectionObserver" in window;
@@ -524,6 +567,22 @@
   }
   addEventListener("scroll",function(){if(!raf)raf=requestAnimationFrame(upd);},{passive:true});
   addEventListener("resize",upd);
+})();
+// תפריט בטלפון: פלוס פותח עמודי משנה, אחד בכל פעם. לחיצה על הרקע או על קישור סוגרת
+(function(){
+  var hd=document.querySelector(".hd"),burger=hd.querySelector(".hd-burger"),mores=[].slice.call(hd.querySelectorAll(".hd-more"));
+  function set(btn,on){btn.parentNode.classList.toggle("open",on);btn.setAttribute("aria-expanded",String(on));}
+  mores.forEach(function(btn){btn.addEventListener("click",function(){
+    var on=!btn.parentNode.classList.contains("open");
+    mores.forEach(function(m){set(m,false);});
+    set(btn,on);
+  });});
+  hd.addEventListener("click",function(e){
+    if(!hd.classList.contains("menu-open"))return;
+    var inNav=e.target.closest(".hd-nav");
+    if((inNav&&e.target.closest("a"))||(!inNav&&!e.target.closest(".hd-burger")&&!e.target.closest(".hd-logo")))burger.click();
+  });
+  burger.addEventListener("click",function(){if(!hd.classList.contains("menu-open"))mores.forEach(function(m){set(m,false);});});
 })();
 </script>
 <script src="https://crm.liavmatzri.co.il/review.js" defer></script>
