@@ -6,7 +6,7 @@
 <title>לב אל לב ישראל</title>
 <link rel="preload" as="font" href="../assets/fonts/GoogleSans-Bold.woff2" type="font/woff2" crossorigin>
 <link rel="icon" href="../assets/logo/logo.webp">
-<link rel="stylesheet" href="../assets/shared.css?v=202611031525">
+<link rel="stylesheet" href="../assets/shared.css?v=202611041058">
 <style>
 /* עמוד הבית המשולב, אחרי הפידבק של שמיל (3.11.2026).
    המסגרת והפתיחה של הקלאסית (MV:s05, MV:h15, MV:hd1). מהמודרנית: קיר התמונות הרצות, הטבעות, והעוגנים.
@@ -128,14 +128,14 @@
 .photo img.was{z-index:1;-webkit-clip-path:circle(75% at 50% 50%);clip-path:circle(75% at 50% 50%);transition:none}
 .photo img.on{z-index:2;-webkit-clip-path:circle(75% at 50% 50%);clip-path:circle(75% at 50% 50%)}
 
-/* סיפורים: מקום שמור, עד שיגיעו סיפורים ואישורי פרסום */
+/* סיפורים: בסקיצה קטעים אמיתיים מסיכום השנה של העמותה, בלי שם, עד שיגיעו סיפורים ואישורי פרסום */
 .stories{padding-block:var(--sec) clamp(48px, 5vw, 96px);padding-inline:var(--gutter)}
-.stories-note{margin-top:12px;max-width:var(--measure);color:var(--muted)}
 .ss{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(32px, 3.2vw, 72px)}
-.s .ph-img{aspect-ratio:3/2;border-radius:var(--r);background:linear-gradient(180deg,#C5D1F6 0%,#F3F1FE 100%)}
+.s{display:flex;flex-direction:column;align-items:flex-start}
+.s img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r)}
 .s small{display:block;margin-top:clamp(16px, 1.4vw, 28px);font-size:var(--fs-meta);font-weight:500;color:var(--blue)}
-.s p{margin-top:8px;color:var(--muted)}
-.s .textlink{margin-top:8px;color:var(--blue)}
+.s p{margin-top:8px;margin-bottom:8px;color:var(--muted)}
+.s .textlink{margin-top:auto;color:var(--blue)}
 
 /* שותפים: הכותרת בצד, והלוגואים באותו אפור רצים עד קצה המסך ונמסים בשני הצדדים. בהובר הצבע חוזר והתנועה נעצרת */
 .partners{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);align-items:center;gap:var(--gap-m);padding-block:clamp(32px, 3vw, 64px) clamp(72px, 7vw, 144px);padding-inline-start:var(--gutter)}
@@ -165,6 +165,8 @@
 .ft3-logo{flex:none;display:block;width:clamp(80px, 6vw, 128px);padding:10px;background:var(--white);border-radius:var(--r)}
 .ft3-brand .ft-line{font-size:clamp(20px, 1.5vw + 0.2rem, 36px);line-height:1.3;font-weight:500;letter-spacing:0}
 .ft3-cols{display:grid;grid-template-columns:auto auto;column-gap:clamp(48px, 6vw, 128px)}
+.ft-org{display:grid;gap:8px;justify-items:start;align-content:start;font-style:normal;color:#C9D3F4}
+.ft-org strong{font-weight:500;color:#F3F5FB}
 @media (hover:hover) and (pointer:fine){.ft3 a:hover{color:#C9D3F4}}
 
 /* במסך רחב הפסקה והכפתורים לא נערמים על הכותרת: הכותרת יורדת ולא יושבת על פנים של אנשים בתמונה. סדר הקריאה לא משתנה */
@@ -244,6 +246,9 @@
   .btn-donate.big{align-self:stretch}
   .ft3-top{grid-template-columns:minmax(0,1fr);gap:32px}
   .ft3-cols{justify-content:space-between}
+  /* בטלפון הקישורים ופרטי העמותה אחד מעל השני, כדי ששום שורה לא תישבר. הפרטים בגוש אחד, והמייל והטלפון שורות לחיצה */
+  .ft3-cols{grid-template-columns:minmax(0,1fr);row-gap:24px}
+  .ft-org{gap:0}
 }
 /* טלפון נמוך: הריווח מתהדק כדי ששני הכפתורים יישארו במסך הראשון */
 @media (max-width:860px) and (max-height:660px){
@@ -271,7 +276,7 @@
         <div class="hd-sub"><a href="#">האנשים שמאחורי לב אל לב</a><a href="#">השגרירים שלנו</a><a href="#">שקיפות ודוחות</a></div></div>
       <div class="hd-item"><a class="hd-link" href="#">ההשפעה שלנו</a></div>
       <div class="hd-item"><a class="hd-link" href="#">יצירת קשר</a></div>
-      <a class="btn-donate" href="#" data-missing="חסר מהעמותה: קישור למערכת התרומות">לתרומה</a>
+      <a class="btn-donate" href="https://israelheart2heart.crowdchange.co/47432" rel="noopener" target="_blank">לתרומה</a>
     </nav>
     <a class="hd-logo" href="./" aria-label="לב אל לב ישראל, לדף הבית"><img src="../assets/logo/logo.webp" alt="Israel Heart2Heart" width="620" height="640"></a>
   </div>
@@ -288,7 +293,7 @@
         <h1 class="rv"><span class="ln">המלחמה נגמרת בשטח.</span> <span class="ln">בבית היא ממשיכה.</span></h1>
         <p class="line2 rv">יש עוד דרך קדימה. הולכים בה יחד.</p>
         <p class="lead rv">לב אל לב ישראל מלווה לוחמים ולוחמות המתמודדים עם פוסט טראומה בעקבות שירותם הצבאי, במסע של שיקום והעצמה. דרך קהילה, גוף ונפש ומנטורים, אנחנו בונים יחד כלים להתמודדות, קשרים מתמשכים והזדמנויות לחיים של שייכות ומשמעות.</p>
-        <div class="cta rv"><a class="btn solid" href="#">להכיר את המסע</a><a class="btn ghost" href="#" data-missing="חסר מהעמותה: קישור לטופס במאנדיי">הרשם לתוכנית האזורית</a></div>
+        <div class="cta rv"><a class="btn solid" href="#">להכיר את המסע</a><a class="btn ghost" href="https://forms.monday.com/forms/9492ab9c4fbe4bfbf2240f31cb72fc11?r=use1" rel="noopener" target="_blank">הרשם לתוכנית האזורית</a></div>
       </div>
       <div class="nav rv">
         <button class="tab" type="button" aria-label="תמונה 1" aria-current="true"><span class="bar"><i></i></span></button>
@@ -371,12 +376,11 @@
   <section class="stories" id="stories">
     <div data-sr>
       <h2>מאחורי הנתונים יש אנשים</h2>
-      <p class="stories-note">[כאן יוצגו שלושה סיפורים אישיים מקוריים.]</p>
     </div>
     <div class="ss">
-      <article class="s" data-sr><div class="ph-img" role="img" aria-label="תמונה"></div><small>שם</small><h3>כותרת</h3><p>תקציר מתוך הסיפור</p><a class="textlink" href="#" data-missing="חסר מהעמותה: סיפור עם תמונה ואישור פרסום בכתב">לסיפור המלא <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></article>
-      <article class="s" data-sr><div class="ph-img" role="img" aria-label="תמונה"></div><small>שם</small><h3>כותרת</h3><p>תקציר מתוך הסיפור</p><a class="textlink" href="#" data-missing="חסר מהעמותה: סיפור עם תמונה ואישור פרסום בכתב">לסיפור המלא <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></article>
-      <article class="s" data-sr><div class="ph-img" role="img" aria-label="תמונה"></div><small>שם</small><h3>כותרת</h3><p>תקציר מתוך הסיפור</p><a class="textlink" href="#" data-missing="חסר מהעמותה: סיפור עם תמונה ואישור פרסום בכתב">לסיפור המלא <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></article>
+      <article class="s" data-sr><img src="../assets/img/circle.webp" alt="קבוצה קטנה יושבת במעגל על הדשא" width="1200" height="1600" loading="lazy"><small>מתוך סיכום שנת הפעילות תשפ״ו</small><h3>קהילה שאפשר לחזור אליה</h3><p>״בהתחלה באתי כי אמרו לי לבוא. לא ממש ידעתי מה אני מחפש שם. ואז לאט לאט הכרתי את האנשים, התחלתי להרגיש יותר בנוח והבנתי שאני לא צריך להסביר כל הזמן מה עובר עליי. היום אני כבר לא מרגיש שאני מגיע לתוכנית. אני מגיע לאנשים שלי. אני יודע שיש לי פה מקום.״</p><a class="textlink" href="#" data-missing="חסר מהעמותה: הסיפור המלא ואישור פרסום בכתב">לסיפור המלא <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></article>
+      <article class="s" data-sr><img src="../assets/img/sisters.webp" alt="נשים מתוכנית אחיות שבלב" width="1400" height="788" loading="lazy"><small>מתוך סיכום שנת הפעילות תשפ״ו</small><h3>גם למשפחה יש מקום</h3><p>״הרבה זמן הרגשתי שאני צריכה להחזיק את הבית ולהיות חזקה בשביל כולם. לא ממש היה מקום לשאול מה איתי. ואז הגעתי לאחיות שבלב ופגשתי נשים שפשוט מבינות. אני לא צריכה להסביר להן למה יום אחד הכול בסדר ולמחרת הכול מתפרק. יש לי מקום לדבר, לצחוק, לבכות אם צריך ופשוט להיות אני.״</p><a class="textlink" href="#" data-missing="חסר מהעמותה: הסיפור המלא ואישור פרסום בכתב">לסיפור המלא <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></article>
+      <article class="s" data-sr><img src="../assets/img/group-flag.webp" alt="קבוצה עם דגל לב אל לב וקשת בשמיים" width="1815" height="1208" loading="lazy"><small>מתוך סיכום שנת הפעילות תשפ״ו</small><h3>כשהסיפור האישי הופך לקשר</h3><p>״בפעם הראשונה סיפרתי באמת את הסיפור שלי ואת מה שעברתי. אנשים פשוט ישבו והקשיבו לי. פתאום הבנתי כמה הייתי צריך להוציא את זה החוצה. נסעתי בשביל החוויה, וחזרתי עם משהו הרבה יותר עמוק.״</p><a class="textlink" href="#" data-missing="חסר מהעמותה: הסיפור המלא ואישור פרסום בכתב">לסיפור המלא <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></article>
     </div>
   </section>
 
@@ -395,7 +399,7 @@
       <p class="eyebrow">המלחמה ממשיכה איתם הביתה</p>
       <h2><span class="ln">מאמצים לוחם או לוחמת</span> <span class="ln">כדי שלא יהיו לבד.</span></h2>
       <p>התמיכה שלכם מאפשרת לקיים את מסע השיקום וההעצמה ולהמשיך ללוות לאורך הדרך.</p>
-      <a class="btn-donate big" href="#" data-missing="חסר מהעמותה: קישור למערכת התרומות">לתרומה</a>
+      <a class="btn-donate big" href="https://israelheart2heart.crowdchange.co/47432" rel="noopener" target="_blank">לתרומה</a>
     </div>
     <div class="adopt-img"><img src="../assets/img/hug-mat.webp" alt="שני משתתפים מתחבקים אחרי שיעור יוגה" width="1200" height="800" loading="lazy"></div>
   </section>
@@ -404,12 +408,12 @@
 <footer class="ftw ft3" id="ft3">
   <div class="ft3-top">
     <div class="ft3-brand"><a class="ft3-logo" href="./" aria-label="לדף הבית"><img src="../assets/logo/logo.webp" alt="Israel Heart2Heart" width="620" height="640" loading="lazy"></a><p class="ft-line"><span class="ln">יש עוד דרך קדימה.</span> <span class="ln">הולכים בה יחד.</span></p></div>
-    <div class="ft3-cols"><ul><li><a href="#">שקיפות ודוחות</a></li><li><a href="#">יצירת קשר</a></li><li><a href="https://wa.me/972528011224" rel="noopener" target="_blank">וואטסאפ סופי</a></li></ul><p class="ft-todo">[פרטי העמותה]</p></div>
+    <div class="ft3-cols"><ul><li><a href="#">שקיפות ודוחות</a></li><li><a href="#">יצירת קשר</a></li><li><a href="https://wa.me/972528011224" rel="noopener" target="_blank">וואטסאפ סופי</a></li></ul><address class="ft-org"><strong>לב אל לב ישראל (ע״ר)</strong><span>עמותה מס׳ 580746352</span><span>שד׳ לכיש 5, קריית גת 8202005</span><a href="mailto:office@israelheart2heart.org">office@israelheart2heart.org</a><a href="tel:+972528011224" dir="ltr">052-8011224</a></address></div>
   </div>
-  <div class="ft-legal"><p>© <span data-year>2026</span> לב אל לב ישראל</p><nav aria-label="מסמכים"><a href="#">פרטיות</a><a href="#">נגישות</a><a href="#">תנאי שימוש</a></nav><p class="ft-credit"><a href="https://liavmatzri.co.il" rel="noopener" target="_blank">עוצב ופותח על ידי ליאב מצרי</a></p></div>
+  <div class="ft-legal"><p>© <span data-year>2026</span> לב אל לב ישראל</p><nav aria-label="מסמכים"><a href="#" data-missing="חסר מהעמותה: נוסח מדיניות הפרטיות">פרטיות</a><a href="#">נגישות</a><a href="#" data-missing="חסר מהעמותה: נוסח תנאי השימוש">תנאי שימוש</a></nav><p class="ft-credit"><a href="https://liavmatzri.co.il" rel="noopener" target="_blank">עוצב ופותח על ידי ליאב מצרי</a></p></div>
 </footer>
 
-<script src="../assets/shared.js?v=202611031525"></script>
+<script src="../assets/shared.js?v=202611041058"></script>
 <script>
 (function(){
   var rIO="IntersectionObserver" in window;
