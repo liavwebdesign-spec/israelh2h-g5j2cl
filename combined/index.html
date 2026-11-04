@@ -6,7 +6,7 @@
 <title>לב אל לב ישראל</title>
 <link rel="preload" as="font" href="../assets/fonts/GoogleSans-Bold.woff2" type="font/woff2" crossorigin>
 <link rel="icon" href="../assets/logo/logo.webp">
-<link rel="stylesheet" href="../assets/shared.css?v=202611041058">
+<link rel="stylesheet" href="../assets/shared.css?v=202611041124">
 <style>
 /* עמוד הבית המשולב, אחרי הפידבק של שמיל (3.11.2026).
    המסגרת והפתיחה של הקלאסית (MV:s05, MV:h15, MV:hd1). מהמודרנית: קיר התמונות הרצות, הטבעות, והעוגנים.
@@ -58,7 +58,9 @@
 .hero.paused .bar i,.hero.paused .sl img{animation-play-state:paused}
 
 .eyebrow{font-size:var(--fs-meta);font-weight:700;color:var(--blue);display:flex;align-items:center;gap:12px}
-.eyebrow::before{content:"";width:32px;height:2px;background:var(--blue)}
+/* הסימן שליד התווית: הלב מהלוגו, קטן ושקט, בצבע של התווית */
+.eyebrow::before{content:"";flex:none;width:.95em;height:.95em;background:var(--blue);-webkit-mask:var(--heart) center/contain no-repeat;mask:var(--heart) center/contain no-repeat}
+:root{--heart:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21.2C6.2 16.6 2 13 2 8.4 2 5.2 4.5 3 7.3 3c1.9 0 3.6 1 4.7 2.7C13.1 4 14.8 3 16.7 3 19.5 3 22 5.2 22 8.4c0 4.6-4.2 8.2-10 12.8z'/%3E%3C/svg%3E")}
 
 /* הדרך: קיר התמונות הרצות, והטקסט בכרטיס לבן שיושב עליו */
 .way{padding-block:var(--sec) clamp(16px, 2vw, 40px);padding-inline:var(--gutter)}
@@ -82,6 +84,11 @@
 /* הקשר האישי: שלוש תמונות באותו גודל. כל אחת נפתחת ממעגל בקצב הגלילה של הקורא, ולא זזה לבד */
 .uniq{padding-block:var(--sec) clamp(48px, 5vw, 96px);padding-inline:var(--gutter);background:linear-gradient(180deg,#FFF 0%,#E4E9FB 26%,#EDF0FC 68%,#FFF 100%)}
 .uniq h2{margin-top:16px}
+/* סקשנים של שלוש עמודות: הכול על ציר אחד במרכז */
+.uniq,.impact,.stories{text-align:center}
+.uniq .eyebrow,.impact .eyebrow{justify-content:center}
+.uniq h2,.impact h2,.stories h2{text-wrap:balance}
+.u p,.r p,.s p{margin-inline:auto;text-wrap:pretty}
 .us{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(32px, 3.2vw, 72px)}
 .u-fig{--ix:20%;--iy:26%;margin:0;aspect-ratio:4/5;overflow:hidden;-webkit-clip-path:inset(calc(var(--iy) * (1 - var(--p, 1))) calc(var(--ix) * (1 - var(--p, 1))) round calc((1 - var(--p, 1)) * 400px + 12px));clip-path:inset(calc(var(--iy) * (1 - var(--p, 1))) calc(var(--ix) * (1 - var(--p, 1))) round calc((1 - var(--p, 1)) * 400px + 12px))}
 .u-fig img{width:100%;height:100%;object-fit:cover;transform:scale(calc(1.12 - .12 * var(--p, 1)))}
@@ -92,7 +99,7 @@
 .impact{padding-block:clamp(32px, 3.2vw, 72px) var(--sec);padding-inline:var(--gutter)}
 .impact h2{margin-top:16px}
 .rings{--ring:clamp(220px, 21vw, 520px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(32px, 3.2vw, 72px)}
-.ring{position:relative;width:min(100%, var(--ring))}
+.ring{position:relative;width:min(100%, var(--ring));margin-inline:auto}
 .ring svg{width:100%;height:auto;overflow:visible}
 .ring circle{fill:none;stroke-width:8}
 .ring .t{stroke:#E9EAF8}
@@ -104,7 +111,7 @@
 .ring b{position:absolute;inset:0;display:grid;place-items:center;direction:ltr;font-size:calc(var(--ring) * .26);line-height:1;font-weight:700;letter-spacing:-.03em;color:var(--blue-deep);font-variant-numeric:tabular-nums}
 .r h3{margin-top:clamp(20px, 1.8vw, 40px)}
 .r p{margin-top:8px;max-width:34ch;color:var(--muted)}
-.src{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px var(--gap-m);margin-top:clamp(32px, 3vw, 72px)}
+.src{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:clamp(32px, 3vw, 72px)}
 .src small{font-size:var(--fs-meta);color:var(--muted)}
 .src .textlink{color:var(--blue)}
 
@@ -131,7 +138,7 @@
 /* סיפורים: בסקיצה קטעים אמיתיים מסיכום השנה של העמותה, בלי שם, עד שיגיעו סיפורים ואישורי פרסום */
 .stories{padding-block:var(--sec) clamp(48px, 5vw, 96px);padding-inline:var(--gutter)}
 .ss{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-m);margin-top:clamp(32px, 3.2vw, 72px)}
-.s{display:flex;flex-direction:column;align-items:flex-start}
+.s{display:flex;flex-direction:column;align-items:center}
 .s img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r)}
 .s small{display:block;margin-top:clamp(16px, 1.4vw, 28px);font-size:var(--fs-meta);font-weight:500;color:var(--blue)}
 .s p{margin-top:8px;margin-bottom:8px;color:var(--muted)}
@@ -179,6 +186,18 @@
   .cta{grid-area:3/1;margin-top:0}
   .nav{grid-area:3/2;justify-self:end;align-self:center}
 }
+/* השלושה עוגנים במחשב: הכרטיסים מרוחקים כך שכל עוגן מקבל גלילה משלו. הפעיל על משטח לבן, השאר נסוגים לרקע האפור */
+@media (min-width:861px){
+  .cards{gap:clamp(96px, 26vh, 300px);padding-block:clamp(40px, 8vh, 96px) clamp(48px, 10vh, 120px)}
+  .card{background:rgba(255,255,255,0);transform:scale(.97);transition:background-color .5s var(--ease),box-shadow .5s var(--ease),transform .5s var(--ease)}
+  .card h3,.card p{opacity:.38;transition:opacity .5s var(--ease),color .5s var(--ease)}
+  .card.on{background:var(--white);transform:none;box-shadow:0 4px 12px rgba(19,26,43,.06),0 28px 56px rgba(19,26,43,.13)}
+  .card.on h3,.card.on p{opacity:1}
+}
+/* הסימן על התמונה: שלושה לבבות, הלב של העוגן הנוכחי מלא */
+.steps{position:absolute;inset-block-end:clamp(16px, 1.6vw, 28px);inset-inline:0;z-index:3;display:flex;justify-content:center;gap:10px;pointer-events:none}
+.steps i{width:16px;height:16px;background:var(--white);opacity:.45;filter:drop-shadow(0 1px 3px rgba(15,26,61,.55));-webkit-mask:var(--heart) center/contain no-repeat;mask:var(--heart) center/contain no-repeat;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.steps i.on{opacity:1;transform:scale(1.25)}
 /* טאבלט לרוחב: הטקסט נערם וגבוה יותר, אז גם ההצללה עולה איתו */
 @media (min-width:861px) and (max-width:1099px){
   .scrim{background:
@@ -193,7 +212,8 @@
 @media (max-width:1023px){
   /* טבעת בצד והטקסט לידה, כדי ששלושת המספרים ייראו יחד */
   .rings{--ring:clamp(116px, 26vw, 200px);grid-template-columns:1fr;gap:clamp(24px, 4vw, 40px)}
-  .r{display:grid;grid-template-columns:var(--ring) minmax(0,1fr);column-gap:clamp(16px, 3vw, 32px);align-items:center}
+  .r{display:grid;grid-template-columns:var(--ring) minmax(0,1fr);column-gap:clamp(16px, 3vw, 32px);align-items:center;text-align:start}
+  .r p{margin-inline:0}
   .ring{grid-row:span 2}
   .r h3{margin-top:0;align-self:end}
   .r p{align-self:start}
@@ -259,6 +279,7 @@
 @media (prefers-reduced-motion:reduce){
   .sl.on img,.col{animation:none}
   .sl,.sl.on{transition:none}
+  .card,.card h3,.card p,.steps i{transition:none;transform:none}
 }
 </style>
 </head>
@@ -370,6 +391,7 @@
       <img class="on" src="../assets/img/group-sofas.webp" alt="" loading="lazy">
       <img src="../assets/img/yoga-sea.webp" alt="" loading="lazy">
       <img src="../assets/img/hug.webp" alt="" loading="lazy">
+      <span class="steps"><i class="on"></i><i></i><i></i></span>
     </div>
   </section>
 
@@ -413,7 +435,7 @@
   <div class="ft-legal"><p>© <span data-year>2026</span> לב אל לב ישראל</p><nav aria-label="מסמכים"><a href="#" data-missing="חסר מהעמותה: נוסח מדיניות הפרטיות">פרטיות</a><a href="#">נגישות</a><a href="#" data-missing="חסר מהעמותה: נוסח תנאי השימוש">תנאי שימוש</a></nav><p class="ft-credit"><a href="https://liavmatzri.co.il" rel="noopener" target="_blank">עוצב ופותח על ידי ליאב מצרי</a></p></div>
 </footer>
 
-<script src="../assets/shared.js?v=202611041058"></script>
+<script src="../assets/shared.js?v=202611041124"></script>
 <script>
 (function(){
   var rIO="IntersectionObserver" in window;
@@ -497,6 +519,7 @@
     if(best===now)return;
     pics.forEach(function(p,i){p.classList.toggle("was",i===now);p.classList.toggle("on",i===best);});
     cards.forEach(function(c,i){c.classList.toggle("on",i===best);});
+    [].forEach.call(document.querySelectorAll(".steps i"),function(h,i){h.classList.toggle("on",i===best);});
     now=best;
   }
   addEventListener("scroll",function(){if(!raf)raf=requestAnimationFrame(upd);},{passive:true});
